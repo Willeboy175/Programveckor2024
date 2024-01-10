@@ -28,7 +28,6 @@ public class MovementScript : MonoBehaviour
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             }
-            
         }
         else
         {
