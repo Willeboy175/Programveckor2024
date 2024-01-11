@@ -12,10 +12,13 @@ public class EnemyMovement : MonoBehaviour
     [Space]
 
     [Tooltip("Enemy walking speed")]
-    public float speed = 10f;
+    public float speed = 3f;
+    [Tooltip("For how long enemy should stand still before changing direction")]
+    public float stopTime = 3f;
 
     private Rigidbody2D rb;
     private float xPos;
+    private float timer;
     private bool walkingRight = true;
 
     // Start is called before the first frame update
@@ -28,16 +31,32 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         xPos = rb.position.x;
+        timer += Time.deltaTime;
+        PatrolMovement();
     }
 
-    public virtual void Movement()
+    public virtual void PatrolMovement()
     {
-        //Decides if enemy should walk right
-        if (xPos <= xMax && walkingRight)
+        if (timer >= stopTime)
         {
-            rb.velocity = new Vector2(Time.deltaTime * speed, rb.velocity.y);
+            if (xPos <= xMax && walkingRight) //Decides if enemy should walk right
+            {
+                rb.velocity = new Vector2(speed, rb.velocity.y);
+            }
+            else if (xMax <= xPos && walkingRight) //Changes direction enemy should walk
+            {
+                walkingRight = false;
+                timer = 0;
+            }
+            else if (xMin <= xPos && walkingRight == false) //Decides if enemy should walk left
+            {
+                rb.velocity = new Vector2(speed * -1, rb.velocity.y);
+            }
+            else if (xPos <= xMin && walkingRight == false) //Changes direction enemy should walk
+            {
+                walkingRight = true;
+                timer = 0;
+            }
         }
-
-        //still need to add statement to walk left and change directions
     }
 }
