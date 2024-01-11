@@ -548,6 +548,7 @@ GameObject:
   - component: {fileID: 2038729807}
   - component: {fileID: 2038729806}
   - component: {fileID: 2038729805}
+  - component: {fileID: 2038729808}
   m_Layer: 0
   m_Name: Spelare
   m_TagString: Untagged
@@ -712,6 +713,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2038729808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038729802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70318890448269645a3e938cf7972086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 2038729807}
+  dashForce: 10
+  isDashing: 0
+  disableMovement: 2
+  movementScript: {fileID: 2038729805}
 --- !u!1 &2110372179
 GameObject:
   m_ObjectHideFlags: 0
