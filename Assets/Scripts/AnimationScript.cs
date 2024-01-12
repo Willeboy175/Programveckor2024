@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class AnimationScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Rigidbody2D rb;
+    public GameObject Player;
+    public Animator animator;
+    public bool isMoving;
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.A))
+        {
+            animator.SetBool("moveLeft", true);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            animator.SetBool("moveRight", true);
+        }
     }
 }
