@@ -29,8 +29,8 @@ public class MovementScript : MonoBehaviour
         if (canMove)
         {
             float horz = Input.GetAxis("Horizontal");
-            isGrounded = Physics2D.Raycast(transform.position, -transform.up, 0.6f, mask); //Raycast som skickar ut en stråle för att kolla om spelaren befinner sig på marken eller inte
-            Debug.DrawRay(transform.position, -transform.up * 0.5f);
+            isGrounded = Physics2D.Raycast(transform.position, -transform.up, 1.1f, mask); //Raycast som skickar ut en stråle för att kolla om spelaren befinner sig på marken eller inte
+            Debug.DrawRay(transform.position, -transform.up * 1.1f);
             if (isGrounded == true) //om man är på marken
             {
                 rb.velocity = new Vector2(movementSpeed * horz, rb.velocity.y); //så rör man sig så här snabbt
