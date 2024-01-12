@@ -30,7 +30,7 @@ public class PausMeny : MonoBehaviour
             
         }
     }
-    public void ResumeButton()  //Om man trycker på "resume" knappen börjar tiden gå igen samt paus menyn stängs
+    public void ResumeButton()  //Om man trycker på resume-knappen eller "escape" börjar tiden gå igen samt paus menyn stängs
     {
         isPaused = false;
         Time.timeScale = 1f;

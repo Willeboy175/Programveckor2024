@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
     {
         if (isStart)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(2);
 
         }
         if (isQuit)
