@@ -12,19 +12,27 @@ public class EnemyMovement : MonoBehaviour
     [Space]
 
     [Tooltip("Enemy walking speed")]
-    public float speed = 3f;
+    public float speed = 2f;
     [Tooltip("For how long enemy should stand still before changing direction")]
-    public float stopTime = 3f;
+    public float stopTime = 2f;
+    public float visionDistance = 4f;
+    public LayerMask playerLayer;
+    public GameObject visionConeRight;
+    public GameObject visionConeLeft;
 
     private Rigidbody2D rb;
-    private float xPos;
+    private float xPos; //x coordinates of the enemy
     private float timer;
-    private bool walkingRight = true;
+    private int faceDirection; //1 is equal to facing right and -1 is equal to facing left
+    private Vector2 playerPos;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        visionConeRight.SetActive(true);
+        visionConeLeft.SetActive(false);
+        faceDirection = 1;
     }
 
     // Update is called once per frame
@@ -32,30 +40,78 @@ public class EnemyMovement : MonoBehaviour
     {
         xPos = rb.position.x;
         timer += Time.deltaTime;
-        PatrolMovement();
+
+        //Raycast to detect player
+        RaycastHit2D hit = Physics2D.Raycast(rb.position, new Vector2(faceDirection, 0), visionDistance, playerLayer);
+
+        if (hit) //Checks if raycast have hit a gameobject on "Player" layer
+        {
+            print("Hit player");
+            Transform playerObject = hit.transform;
+            playerPos = playerObject.position;
+            FollowPlayer();
+        }
+        else
+        {
+            PatrolMovement();
+        }
+        
+        Debug.DrawRay(rb.position, new Vector2(faceDirection * visionDistance, 0));
+        
     }
 
-    public virtual void PatrolMovement()
+    void PatrolMovement()
     {
         if (timer >= stopTime)
         {
-            if (xPos <= xMax && walkingRight) //Decides if enemy should walk right
+            if (xPos <= xMax && faceDirection == 1) //Decides if enemy should walk right
             {
                 rb.velocity = new Vector2(speed, rb.velocity.y);
             }
-            else if (xMax <= xPos && walkingRight) //Changes direction enemy should walk
+            else if (xMax <= xPos && faceDirection == 1) //Changes direction enemy should walk
             {
-                walkingRight = false;
+                faceDirection = -1;
+                visionConeRight.SetActive(false);
+                visionConeLeft.SetActive(true);
                 timer = 0;
             }
-            else if (xMin <= xPos && walkingRight == false) //Decides if enemy should walk left
+            else if (xMin <= xPos && faceDirection == -1) //Decides if enemy should walk left
             {
                 rb.velocity = new Vector2(speed * -1, rb.velocity.y);
             }
-            else if (xPos <= xMin && walkingRight == false) //Changes direction enemy should walk
+            else if (xPos <= xMin && faceDirection == -1) //Changes direction enemy should walk
             {
-                walkingRight = true;
+                faceDirection = 1;
+                visionConeRight.SetActive(true);
+                visionConeLeft.SetActive(false);
                 timer = 0;
+            }
+        }
+    }
+
+    void FollowPlayer()
+    {
+        if (faceDirection == 1)
+        {
+            if (xPos + 4 <= playerPos.x)
+            {
+                rb.velocity = new Vector2(speed, rb.velocity.y);
+            }
+            else if (xPos + 2 >= playerPos.x)
+            {
+                rb.velocity = new Vector2(speed * -1, rb.velocity.y);
+            }
+
+        }
+        else if (faceDirection == -1)
+        {
+            if (xPos - 4 >= playerPos.x)
+            {
+                rb.velocity = new Vector2(speed * -1, rb.velocity.y);
+            }
+            else if (xPos - 2 <= playerPos.x)
+            {
+                rb.velocity = new Vector2(speed, rb.velocity.y);
             }
         }
     }
