@@ -93,8 +93,9 @@ public class EnemyMovement : MonoBehaviour
 
     void FollowPlayer()
     {
-        if (faceDirection == 1)
+        if (faceDirection == 1) //If enemy is facing right when seeing player
         {
+            //Decides if enemy should walk closer och further away from player
             if (xPos + 4 <= playerPos.x)
             {
                 rb.velocity = new Vector2(speed, rb.velocity.y);
@@ -105,8 +106,9 @@ public class EnemyMovement : MonoBehaviour
             }
 
         }
-        else if (faceDirection == -1)
+        else if (faceDirection == -1) //If enemy is facing left when seeing player
         {
+            //Decides if enemy should walk closer och further away from player
             if (xPos - 4 >= playerPos.x)
             {
                 rb.velocity = new Vector2(speed * -1, rb.velocity.y);
