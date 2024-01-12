@@ -12,12 +12,12 @@ public class MainMenu : MonoBehaviour
     {
         if (isStart)
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(2); // Öppnar spel-scenen
 
         }
         if (isQuit)
         {
-            Application.Quit();
+            Application.Quit(); // stänger ner programmet (när det är en build)
         }
     }
 }
