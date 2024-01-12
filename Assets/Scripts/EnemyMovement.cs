@@ -15,8 +15,10 @@ public class EnemyMovement : MonoBehaviour
     public float speed = 2f;
     [Tooltip("For how long enemy should stand still before changing direction")]
     public float stopTime = 2f;
-    public float visionDistance = 4f;
     public LayerMask playerLayer;
+    [Space]
+
+    public float visionDistance = 4f;
     public GameObject visionConeRight;
     public GameObject visionConeLeft;
 

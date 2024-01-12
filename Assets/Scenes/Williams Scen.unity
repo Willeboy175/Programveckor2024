@@ -253,11 +253,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &192056466 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5869298543279154460, guid: 24a162e1a641ee94fba042d49f27d41e, type: 3}
+  m_PrefabInstance: {fileID: 806901871}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &192056472 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5473932198094013728, guid: 24a162e1a641ee94fba042d49f27d41e, type: 3}
   m_PrefabInstance: {fileID: 806901871}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &192056473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192056466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2990261efdad854bbcc020847779145, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunBarrelTransform: {fileID: 0}
+  bulletPrefab: {fileID: 8771131793197909605, guid: a93a3a3f3c9ac7344b94eb3f9a209656, type: 3}
+  bulletForce: 10
+  fireRate: 0.5
 --- !u!1 &417003381
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,7 +501,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5869298543279154460, guid: 24a162e1a641ee94fba042d49f27d41e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 192056473}
   m_SourcePrefab: {fileID: 100100000, guid: 24a162e1a641ee94fba042d49f27d41e, type: 3}
 --- !u!1 &839952262
 GameObject:
