@@ -713,6 +713,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spelare med Shooting
       objectReference: {fileID: 0}
+    - target: {fileID: 3340951795237671330, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+      propertyPath: bulletForce
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4142439479217410149, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 1604954679}
+    - target: {fileID: 4142439479217410149, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+      propertyPath: DashScript
+      value: 
+      objectReference: {fileID: 1604954676}
+    - target: {fileID: 4142439479217410149, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+      propertyPath: airMovementSpeed
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4142439479217410149, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+      propertyPath: playerCollider2D
+      value: 
+      objectReference: {fileID: 1604954678}
+    - target: {fileID: 7080562584319546313, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+      propertyPath: dashForce
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8111321479724187247, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.992393
@@ -2300,6 +2324,27 @@ PrefabInstance:
 --- !u!4 &1604954673 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8111321479724187247, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+  m_PrefabInstance: {fileID: 532892360}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1604954676 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7080562584319546313, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+  m_PrefabInstance: {fileID: 532892360}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70318890448269645a3e938cf7972086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &1604954678 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 8904998255303252295, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+  m_PrefabInstance: {fileID: 532892360}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1604954679 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 627870218790990876, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
   m_PrefabInstance: {fileID: 532892360}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1630004422
