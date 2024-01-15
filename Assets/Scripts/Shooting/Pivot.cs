@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RotateAroundPlayer : MonoBehaviour
 {
-    public Transform player;
-    public float rotationSpeed = 5f;
+    public Transform player; // Definierar spelarns position
+    public float rotationSpeed = 5f; //Bestämmer hur snabbt den ska rotera runt spelaren
 
     void Update()
     {
@@ -19,7 +19,7 @@ public class RotateAroundPlayer : MonoBehaviour
             Vector3 direction = (targetPosition - player.position).normalized;
 
             Quaternion toRotation = Quaternion.LookRotation(direction);
-            float angle = Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
@@ -27,6 +27,7 @@ public class RotateAroundPlayer : MonoBehaviour
             transform.position = player.position + direction * distanceFromPlayer;
         }
         else
+        // Det här händer bara ifall att Transformen för spelaren inte finns
         {
             Debug.LogError("Player reference not set. Please assign the player transform.");
         }

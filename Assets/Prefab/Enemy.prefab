@@ -307,8 +307,8 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
-  xMax: 2
-  xMin: -2
+  xMax: 0
+  xMin: 0
   visionDistance: 6
   visionConeRight: {fileID: 2192167509443917463}
   visionConeLeft: {fileID: 4194655447440968096}
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e853a6822540434bb9facea5c1ac915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 2
 --- !u!50 &2833081389394371917
 Rigidbody2D:
   serializedVersion: 4
@@ -363,7 +363,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 4763622589491981216}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ca4a7f18e5e0c88459bd65f7719ce583, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

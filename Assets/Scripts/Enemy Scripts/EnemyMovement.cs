@@ -29,6 +29,8 @@ public class EnemyMovement : MonoBehaviour
     public float fireSpeed = 1f;
     public GameObject enemyBullet;
 
+    public static int direction;
+
     private Rigidbody2D rb;
     private float xPos; //x coordinates of the enemy
     private float stopTimer;
@@ -51,6 +53,7 @@ public class EnemyMovement : MonoBehaviour
         xPos = rb.position.x;
         stopTimer += Time.deltaTime;
         shootTimer += Time.deltaTime;
+        direction = faceDirection;
 
         //Raycast to detect player
         RaycastHit2D hit = Physics2D.Raycast(rb.position, new Vector2(faceDirection, 0), visionDistance, playerLayer);
@@ -134,8 +137,15 @@ public class EnemyMovement : MonoBehaviour
     {
         if (shootTimer >= fireSpeed)
         {
-            GameObject bullet = Instantiate(enemyBullet, rb.position,
-                Quaternion.FromToRotation(rb.position, rb.position + new Vector2(faceDirection, 0)));
+            if (faceDirection == 1)
+            {
+                GameObject bullet = Instantiate(enemyBullet, rb.position, Quaternion.Euler(0, 0, 0));
+            }
+            else if (faceDirection == -1)
+            {
+                GameObject bullet = Instantiate(enemyBullet, rb.position, Quaternion.Euler(0, 0, 180));
+            }
+            
             shootTimer = 0;
         }
     }
