@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!50 &336152785 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 627870218790990876, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+  m_PrefabInstance: {fileID: 1721726443}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1009073212
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,6 +468,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spelare med Shooting
       objectReference: {fileID: 0}
+    - target: {fileID: 4142439479217410149, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 336152785}
     - target: {fileID: 8111321479724187247, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

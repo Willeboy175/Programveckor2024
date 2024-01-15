@@ -5,7 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public int maxHealth = 100; //sätter hälsan av gubben
-    private int currentHealth; // Är en check på hur mycket hälsa gubbenm har kvar
+    private int currentHealth; // Är en check på hur mycket hälsa gubben har kvar
 
     void Start()
     {
@@ -22,6 +22,7 @@ public class Health : MonoBehaviour
         }
     }
 
+    // När gubben dör tas objectet bort
     void Die()
     {
         gameObject.SetActive(false);
