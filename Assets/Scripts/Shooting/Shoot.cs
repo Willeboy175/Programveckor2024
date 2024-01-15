@@ -38,7 +38,7 @@ public class Shoot : MonoBehaviour
             bulletRb.AddForce(shootDirection * bulletForce, ForceMode2D.Impulse);
         }
 
-        bulletRb.gravityScale = 1f;
+        bulletRb.gravityScale = 0f;
 
         Destroy(bullet, 3f);
     }
