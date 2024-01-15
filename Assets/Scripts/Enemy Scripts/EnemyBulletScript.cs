@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class EnemyBulletScript : MonoBehaviour
@@ -10,11 +11,13 @@ public class EnemyBulletScript : MonoBehaviour
 
     private Rigidbody2D rb;
     private float timer;
+    private int direction;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        direction = EnemyMovement.faceDirection;
     }
 
     // Update is called once per frame
@@ -22,7 +25,7 @@ public class EnemyBulletScript : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        rb.velocity = new Vector2(bulletSpeed, 0);
+        rb.velocity = new Vector2(direction * bulletSpeed, 0);
 
         if (timer > aliveTime)
         {
