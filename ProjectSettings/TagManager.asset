@@ -6,8 +6,6 @@ TagManager:
   tags:
   - Enemy
   - PausMeny
-  - EnemyBullet
-  - PlayerBullet
   layers:
   - Default
   - TransparentFX
@@ -16,8 +14,8 @@ TagManager:
   - Water
   - UI
   - Player
-  - Enemy
   - 
+  - TrashCan
   - 
   - 
   - 
