@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [Header("At what x coordinates the enemy will stay within")]
-    [Tooltip("Maximum x position enemy will go to")]
-    public int xMax;
-    [Tooltip("Minimum x position enemy will go to")]
-    public int xMin;
-    [Space]
-
+    [Header("Movement")]
     [Tooltip("Enemy walking speed")]
     public float speed = 2f;
     [Tooltip("For how long enemy should stand still before changing direction")]
@@ -18,13 +12,27 @@ public class EnemyMovement : MonoBehaviour
     public LayerMask playerLayer;
     [Space]
 
-    public float visionDistance = 4f;
+    [Header("At what x coordinates the enemy will stay within")]
+    [Tooltip("Maximum x position enemy will go to")]
+    public int xMax;
+    [Tooltip("Minimum x position enemy will go to")]
+    public int xMin;
+    [Space]
+
+    [Header("Player detection")]
+    public float visionDistance = 6f;
     public GameObject visionConeRight;
     public GameObject visionConeLeft;
+    [Space]
+
+    [Header("Shooting")]
+    public float fireSpeed = 1f;
+    public GameObject enemyBullet;
 
     private Rigidbody2D rb;
     private float xPos; //x coordinates of the enemy
-    private float timer;
+    private float stopTimer;
+    private float shootTimer;
     private int faceDirection; //1 is equal to facing right and -1 is equal to facing left
     private Vector2 playerPos;
 
@@ -41,7 +49,8 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         xPos = rb.position.x;
-        timer += Time.deltaTime;
+        stopTimer += Time.deltaTime;
+        shootTimer += Time.deltaTime;
 
         //Raycast to detect player
         RaycastHit2D hit = Physics2D.Raycast(rb.position, new Vector2(faceDirection, 0), visionDistance, playerLayer);
@@ -52,6 +61,7 @@ public class EnemyMovement : MonoBehaviour
             Transform playerObject = hit.transform;
             playerPos = playerObject.position;
             FollowPlayer();
+            Shoot();
         }
         else
         {
@@ -64,7 +74,7 @@ public class EnemyMovement : MonoBehaviour
 
     void PatrolMovement()
     {
-        if (timer >= stopTime)
+        if (stopTimer >= stopTime)
         {
             if (xPos <= xMax && faceDirection == 1) //Decides if enemy should walk right
             {
@@ -75,7 +85,7 @@ public class EnemyMovement : MonoBehaviour
                 faceDirection = -1;
                 visionConeRight.SetActive(false);
                 visionConeLeft.SetActive(true);
-                timer = 0;
+                stopTimer = 0;
             }
             else if (xMin <= xPos && faceDirection == -1) //Decides if enemy should walk left
             {
@@ -86,7 +96,7 @@ public class EnemyMovement : MonoBehaviour
                 faceDirection = 1;
                 visionConeRight.SetActive(true);
                 visionConeLeft.SetActive(false);
-                timer = 0;
+                stopTimer = 0;
             }
         }
     }
@@ -117,6 +127,16 @@ public class EnemyMovement : MonoBehaviour
             {
                 rb.velocity = new Vector2(speed, rb.velocity.y);
             }
+        }
+    }
+
+    void Shoot()
+    {
+        if (shootTimer >= fireSpeed)
+        {
+            GameObject bullet = Instantiate(enemyBullet, rb.position,
+                Quaternion.FromToRotation(rb.position, rb.position + new Vector2(faceDirection, 0)));
+            shootTimer = 0;
         }
     }
 }

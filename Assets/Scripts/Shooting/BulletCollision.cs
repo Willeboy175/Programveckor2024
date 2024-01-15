@@ -9,7 +9,7 @@ public class BulletCollision : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         //kollar om objectet som har kolliderats med har ett health script
-        Health enemyHealth = other.GetComponent<Health>();
+        EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
 
         if (enemyHealth != null)
         {
