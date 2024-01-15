@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 public class MovementScript : MonoBehaviour
 {
-    Rigidbody2D rb;
-    [SerializeField]
-    float movementSpeed = 4f; //hastigheten för att gå framåt och bakåt
-    [SerializeField]
-    float jumpPower = 5f; //bestämmer hur högt man kan hoppa
-    [SerializeField]
-    float airMovementSpeed = 2f; //justerar hastigheten i luften
+    public Rigidbody2D rb;
+    [SerializeField] float movementSpeed = 4f; //hastigheten för att gå framåt och bakåt
+    [SerializeField] float jumpPower = 5f; //bestämmer hur högt man kan hoppa
+    [SerializeField] float airMovementSpeed = 2f; //justerar hastigheten i luften
+    [SerializeField] LayerMask mask;
     bool isGrounded; //kollar om man är på marken
-    [SerializeField]
-    LayerMask mask;
-    private bool _canMove;
+    private bool _canMove; //Kollar om spelaren får röra på sig
+    [SerializeField] float interactionRadius = 2f;
+    [SerializeField] LayerMask trashcanLayer;
+    [SerializeField] Collider2D playerCollider2D;
+    public DashScript DashScript;
     public bool canMove
-    {
+    {  
         get { return _canMove; }
         set { _canMove = value; }
     }

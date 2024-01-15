@@ -7,7 +7,7 @@ public class DashScript : MonoBehaviour
     [SerializeField]
     Rigidbody2D rb;
     [SerializeField]
-    float dashForce = 5000f;
+    float dashForce = 5;
     public bool isDashing;
     float dashCooldown = 2.5f;
     float dashTimer;
@@ -18,7 +18,7 @@ public class DashScript : MonoBehaviour
         isDashing = false;
         dashTimer = 0f;
     }
-    void Dash()
+    void Dash() //Funktion för dashen
     {
         Vector2 dashDirection = new Vector2();
         if (Input.GetKey(KeyCode.A))
@@ -43,7 +43,7 @@ public class DashScript : MonoBehaviour
         dashTimer = 0;
         Debug.Log("Undviker");
         movementScript.canMove = false;
-        Invoke("EnableMovement", 0.2f);
+        Invoke("EnableMovement", 0.2f); //Sätter på movementscriptet efter 0,2 sekunder
     }
     void Update()
     {
@@ -56,12 +56,12 @@ public class DashScript : MonoBehaviour
         {
             isDashing = false;
         }
-        if (dashTimer >= dashCooldown)
+        if (dashTimer >= dashCooldown) //Om dashtimern är större eller lika med cooldownen så printas det att den är redo
         {
             Debug.Log("Undvikelseförmågan är redo");
         }
     }
-    void EnableMovement()
+    void EnableMovement() //Funktion för att slå på movement igen
     {
         isDashing = false;
         movementScript.canMove = true;

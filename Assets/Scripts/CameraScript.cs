@@ -8,10 +8,8 @@ public class CameraScript : MonoBehaviour
     Vector3 offset = new Vector3(0, 0, -1);
     float smoothTime = 0.25f;
     Vector3 velocity = Vector3.zero;
-
     [SerializeField]
     private Transform target;
-
     void Update()
     {
         Vector3 targetPosition = target.position + offset;
