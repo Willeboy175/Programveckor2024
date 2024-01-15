@@ -264,6 +264,7 @@ GameObject:
   - component: {fileID: 7232002430681080804}
   - component: {fileID: 2833081389394371917}
   - component: {fileID: 7426631368669847588}
+  - component: {fileID: 2413491339343388222}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -305,10 +306,10 @@ MonoBehaviour:
   xMin: -2
   speed: 4
   stopTime: 2
-  visionDistance: 6
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  visionDistance: 6
   visionConeRight: {fileID: 2192167509443917463}
   visionConeLeft: {fileID: 4194655447440968096}
 --- !u!50 &2833081389394371917
@@ -326,7 +327,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 1
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -383,3 +384,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &2413491339343388222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4763622589491981216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e853a6822540434bb9facea5c1ac915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
