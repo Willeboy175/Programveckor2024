@@ -307,8 +307,8 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
-  xMax: 2
-  xMin: -2
+  xMax: 0
+  xMin: 0
   visionDistance: 6
   visionConeRight: {fileID: 2192167509443917463}
   visionConeLeft: {fileID: 4194655447440968096}
@@ -363,7 +363,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 4763622589491981216}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ca4a7f18e5e0c88459bd65f7719ce583, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
