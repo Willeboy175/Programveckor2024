@@ -8,7 +8,8 @@ public class MovementScript : MonoBehaviour
     [SerializeField] float jumpPower = 5f; //bestämmer hur högt man kan hoppa
     [SerializeField] float airMovementSpeed = 2f; //justerar hastigheten i luften
     [SerializeField] LayerMask mask;
-    bool isGrounded; //kollar om man är på marken
+    bool isGrounded1; //kollar om man är på marken
+    bool isGrounded2;
     private bool _canMove; //Kollar om spelaren får röra på sig
     [SerializeField] float interactionRadius = 2f;
     [SerializeField] LayerMask trashcanLayer;
@@ -29,9 +30,14 @@ public class MovementScript : MonoBehaviour
         if (canMove)
         {
             float horz = Input.GetAxis("Horizontal");
-            isGrounded = Physics2D.Raycast(transform.position, -transform.up, 1.1f, mask); //Raycast som skickar ut en stråle för att kolla om spelaren befinner sig på marken eller inte
-            Debug.DrawRay(transform.position, -transform.up * 1.1f);
-            if (isGrounded == true) //om man är på marken
+
+            isGrounded1 = Physics2D.Raycast(transform.position + new Vector3(0.45f, 0, 0), -transform.up, 1.1f, mask); //Raycast som skickar ut en stråle för att kolla om spelaren befinner sig på marken eller inte
+            isGrounded2 = Physics2D.Raycast(transform.position + new Vector3(-0.45f, 0,0), -transform.up, 1.1f, mask);
+
+            Debug.DrawRay(transform.position + new Vector3(0.45f, 0, 0), -transform.up * 1.1f);
+            Debug.DrawRay(transform.position + new Vector3(-0.45f, 0, 0), -transform.up * 1.1f);
+
+            if (isGrounded1 == true || isGrounded2 == true) //om man är på marken
             {
                 rb.velocity = new Vector2(movementSpeed * horz, rb.velocity.y); //så rör man sig så här snabbt
                 if (Input.GetKeyDown(KeyCode.Space)) //och hoppar
