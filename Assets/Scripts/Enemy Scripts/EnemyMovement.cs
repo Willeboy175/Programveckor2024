@@ -29,11 +29,13 @@ public class EnemyMovement : MonoBehaviour
     public float fireSpeed = 1f;
     public GameObject enemyBullet;
 
+    public static int direction;
+
     private Rigidbody2D rb;
     private float xPos; //x coordinates of the enemy
     private float stopTimer;
     private float shootTimer;
-    public static int faceDirection; //1 is equal to facing right and -1 is equal to facing left
+    private int faceDirection; //1 is equal to facing right and -1 is equal to facing left
     private Vector2 playerPos;
 
     // Start is called before the first frame update
@@ -51,6 +53,7 @@ public class EnemyMovement : MonoBehaviour
         xPos = rb.position.x;
         stopTimer += Time.deltaTime;
         shootTimer += Time.deltaTime;
+        direction = faceDirection;
 
         //Raycast to detect player
         RaycastHit2D hit = Physics2D.Raycast(rb.position, new Vector2(faceDirection, 0), visionDistance, playerLayer);

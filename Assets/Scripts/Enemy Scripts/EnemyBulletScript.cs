@@ -17,7 +17,7 @@ public class EnemyBulletScript : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        direction = EnemyMovement.faceDirection;
+        direction = EnemyMovement.direction;
     }
 
     // Update is called once per frame
