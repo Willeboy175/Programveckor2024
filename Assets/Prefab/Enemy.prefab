@@ -261,11 +261,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3200803069878514342}
-  - component: {fileID: 7232002430681080804}
+  - component: {fileID: 2082851848120188814}
+  - component: {fileID: 2413491339343388222}
   - component: {fileID: 2833081389394371917}
   - component: {fileID: 7426631368669847588}
-  - component: {fileID: 2413491339343388222}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -290,7 +290,7 @@ Transform:
   - {fileID: 8198480858686856535}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7232002430681080804
+--- !u!114 &2082851848120188814
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -299,19 +299,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 4763622589491981216}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c09f89641300c0b4d990bf92f09a644a, type: 3}
+  m_Script: {fileID: 11500000, guid: b13bdfbaa95b65b47926fcb41314af6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xMax: 2
-  xMin: -2
-  speed: 4
+  speed: 2
   stopTime: 2
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  xMax: 2
+  xMin: -2
   visionDistance: 6
   visionConeRight: {fileID: 2192167509443917463}
   visionConeLeft: {fileID: 4194655447440968096}
+  fireSpeed: 1
+  enemyBullet: {fileID: 8771131793197909605, guid: 41fceeba66d940b4bacb595dc9c6334c, type: 3}
+--- !u!114 &2413491339343388222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4763622589491981216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e853a6822540434bb9facea5c1ac915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!50 &2833081389394371917
 Rigidbody2D:
   serializedVersion: 4
@@ -327,7 +342,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 1
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -384,16 +399,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
---- !u!114 &2413491339343388222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4763622589491981216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e853a6822540434bb9facea5c1ac915, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
