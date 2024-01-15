@@ -175,12 +175,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e6806061b2c2a5429a3e5bc3114564d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
   movementSpeed: 5
   jumpPower: 7.5
   airMovementSpeed: 2.5
   mask:
     serializedVersion: 2
     m_Bits: 8
+  interactionRadius: 2
+  trashcanLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  playerCollider2D: {fileID: 0}
+  DashScript: {fileID: 0}
 --- !u!114 &7080562584319546313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,7 +259,7 @@ Transform:
   m_GameObject: {fileID: 2148693457134747320}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.75, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0.75, y: -0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
