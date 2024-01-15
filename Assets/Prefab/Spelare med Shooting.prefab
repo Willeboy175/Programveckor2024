@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4142439479217410149}
   - component: {fileID: 7080562584319546313}
   - component: {fileID: 3340951795237671330}
+  - component: {fileID: -6366756420033655201}
   m_Layer: 6
   m_Name: Spelare med Shooting
   m_TagString: Player
@@ -212,6 +213,19 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8727657718295718625, guid: 86174ddf7f972fb4da10b3cb666f5e4e, type: 3}
   bulletForce: 10
   fireRate: 3
+--- !u!114 &-6366756420033655201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987405189707558259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b4b115e2c80bca4cb8884e05c54064f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
 --- !u!1 &2148693457134747320
 GameObject:
   m_ObjectHideFlags: 0
