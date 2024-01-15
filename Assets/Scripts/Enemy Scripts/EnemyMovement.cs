@@ -33,7 +33,7 @@ public class EnemyMovement : MonoBehaviour
     private float xPos; //x coordinates of the enemy
     private float stopTimer;
     private float shootTimer;
-    private int faceDirection; //1 is equal to facing right and -1 is equal to facing left
+    public static int faceDirection; //1 is equal to facing right and -1 is equal to facing left
     private Vector2 playerPos;
 
     // Start is called before the first frame update
@@ -134,8 +134,15 @@ public class EnemyMovement : MonoBehaviour
     {
         if (shootTimer >= fireSpeed)
         {
-            GameObject bullet = Instantiate(enemyBullet, rb.position,
-                Quaternion.FromToRotation(rb.position, rb.position + new Vector2(faceDirection, 0)));
+            if (faceDirection == 1)
+            {
+                GameObject bullet = Instantiate(enemyBullet, rb.position, Quaternion.Euler(0, 0, 0));
+            }
+            else if (faceDirection == -1)
+            {
+                GameObject bullet = Instantiate(enemyBullet, rb.position, Quaternion.Euler(0, 0, 180));
+            }
+            
             shootTimer = 0;
         }
     }

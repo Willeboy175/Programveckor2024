@@ -186,8 +186,8 @@ MonoBehaviour:
   trashcanLayer:
     serializedVersion: 2
     m_Bits: 0
-  playerCollider2D: {fileID: 0}
-  DashScript: {fileID: 0}
+  playerCollider2D: {fileID: 8904998255303252295}
+  DashScript: {fileID: 7080562584319546313}
 --- !u!114 &7080562584319546313
 MonoBehaviour:
   m_ObjectHideFlags: 0
