@@ -135,10 +135,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spelare med Shooting
       objectReference: {fileID: 0}
-    - target: {fileID: 4142439479217410149, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
-      propertyPath: spriteRenderer
-      value: 
-      objectReference: {fileID: 1020719136}
     - target: {fileID: 8111321479724187247, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -184,11 +180,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
---- !u!212 &1020719136 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 4552329342524444425, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
-  m_PrefabInstance: {fileID: 1020719135}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1615102598
 GameObject:
   m_ObjectHideFlags: 0

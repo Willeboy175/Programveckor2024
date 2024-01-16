@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 7080562584319546313}
   - component: {fileID: 3340951795237671330}
   - component: {fileID: -6366756420033655201}
+  - component: {fileID: 8923087102741324070}
+  - component: {fileID: 304217815412582140}
   m_Layer: 6
   m_Name: Spelare med Shooting
   m_TagString: Player
@@ -80,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bea840e222493244ea245d94001f4e8e, type: 3}
+  m_Sprite: {fileID: 462006373, guid: eba66509aa142f44b9d8d2829daeb7b6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -183,12 +185,14 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+  raycastLength: 1.1
   interactionRadius: 2
   trashcanLayer:
     serializedVersion: 2
     m_Bits: 256
   playerCollider2D: {fileID: 8904998255303252295}
   DashScript: {fileID: 7080562584319546313}
+  spriteRenderer: {fileID: 4552329342524444425}
 --- !u!114 &7080562584319546313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,6 +238,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
+--- !u!95 &8923087102741324070
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987405189707558259}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7a95a8fe796a5f945a41bea356dd5be2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &304217815412582140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987405189707558259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddad8f1af81963e43830a952299750c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 627870218790990876}
+  Player: {fileID: 1987405189707558259}
+  animator: {fileID: 8923087102741324070}
 --- !u!1 &2148693457134747320
 GameObject:
   m_ObjectHideFlags: 0
