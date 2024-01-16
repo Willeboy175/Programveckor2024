@@ -8,7 +8,7 @@ public class GameOverScript : MonoBehaviour
     //Kod som är gjord för att knapparna ska ladda olika scener när man dött
     public void LoadMenu()
     {
-        SceneManager.LoadScene("Edvins Scen");
+        SceneManager.LoadScene("Main Menu");
     }
     public void Restart()
     {
