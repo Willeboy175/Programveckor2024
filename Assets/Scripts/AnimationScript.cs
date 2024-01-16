@@ -7,7 +7,6 @@ public class AnimationScript : MonoBehaviour
     public Rigidbody2D rb;
     public GameObject Player;
     public Animator animator;
-    public bool isMoving;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -15,13 +14,17 @@ public class AnimationScript : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
         {
-            animator.SetBool("moveLeft", true);
+            animator.SetBool("move", true);
         }
-        if (Input.GetKey(KeyCode.D))
+        else
         {
-            animator.SetBool("moveRight", true);
+            animator.SetBool("move", false);
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            animator.SetTrigger("jump");
         }
     }
 }

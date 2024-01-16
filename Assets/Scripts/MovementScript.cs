@@ -24,6 +24,7 @@ public class MovementScript : MonoBehaviour
     public LayerMask trashcanLayer;
     public Collider2D playerCollider2D;
     public DashScript DashScript;
+    public SpriteRenderer spriteRenderer;
 
     private Rigidbody2D rb;
     private float playerInput;
@@ -41,6 +42,11 @@ public class MovementScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         canMove = true;
+        spriteRenderer = GetComponent<SpriteRenderer>(); // Get the SpriteRenderer component
+        if (spriteRenderer == null)
+        {
+            Debug.LogError("Spriterenderer was not found");
+        }
     }
 
     void Update()
@@ -53,8 +59,17 @@ public class MovementScript : MonoBehaviour
         {
             if (isGrounded1 == true || isGrounded2 == true) //om man är på marken
             {
+                //Flip the sprite based on player input
+                if (playerInput < 0) // Moving left (A key)
+                {
+                    spriteRenderer.flipX = true; //Flip the sprite
+                }
+                else if (playerInput > 0) //Moving right (D key)
+                {
+                    spriteRenderer.flipX = false; //Unflip the sprite
+                }
                 rb.velocity = rb.velocity + CalculateMovement(movementSpeed, groundMaxVelocityChange);
-
+                
                 if (Input.GetKeyDown(KeyCode.Space)) //Om spelaren hoppar
                 {
                     rb.velocity = new Vector2(rb.velocity.x, jumpPower); //så här högt
@@ -66,7 +81,6 @@ public class MovementScript : MonoBehaviour
             }
         }
     }
-
     void GroundCheck()
     {
         isGrounded1 = Physics2D.Raycast(transform.position + new Vector3(0.45f, 0, 0), -transform.up, raycastLength, groundMask); //Raycast som skickar ut en stråle för att kolla om spelaren befinner sig på marken eller inte
