@@ -28,6 +28,9 @@ public class EnemyMovement : MonoBehaviour
     [Header("Shooting")]
     public float fireSpeed = 1f;
     public GameObject enemyBullet;
+    [Space]
+
+    public SpriteRenderer spriteRenderer;
 
     public static int direction;
 
@@ -42,6 +45,8 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = rb.GetComponent<SpriteRenderer>();
+        spriteRenderer.flipX = true;
         visionConeRight.SetActive(true);
         visionConeLeft.SetActive(false);
         faceDirection = 1;
@@ -86,6 +91,7 @@ public class EnemyMovement : MonoBehaviour
             else if (xMax <= xPos && faceDirection == 1) //Changes direction enemy should walk
             {
                 faceDirection = -1;
+                spriteRenderer.flipX = false;
                 visionConeRight.SetActive(false);
                 visionConeLeft.SetActive(true);
                 stopTimer = 0;
@@ -97,6 +103,7 @@ public class EnemyMovement : MonoBehaviour
             else if (xPos <= xMin && faceDirection == -1) //Changes direction enemy should walk
             {
                 faceDirection = 1;
+                spriteRenderer.flipX = true;
                 visionConeRight.SetActive(true);
                 visionConeLeft.SetActive(false);
                 stopTimer = 0;
