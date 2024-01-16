@@ -123,6 +123,56 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &86510288 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7028223517852200974, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+  m_PrefabInstance: {fileID: 1721726443}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &86510292
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86510288}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.015164778, y: -0.28054792}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.120444685, y: 1.5610956}
+  m_EdgeRadius: 0
 --- !u!50 &336152785 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 627870218790990876, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
@@ -141,7 +191,7 @@ GameObject:
   - component: {fileID: 1009073215}
   m_Layer: 3
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -468,17 +518,49 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spelare med Shooting
       objectReference: {fileID: 0}
+    - target: {fileID: 2237731690837758698, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237731690837758698, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+      propertyPath: m_Pitch
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237731690837758698, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237731690837758698, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237731690837758698, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+      propertyPath: MinDistance
+      value: 1.0909885
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237731690837758698, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2f695c3988cf43f45b10590b6f172ff8, type: 3}
+    - target: {fileID: 2237731690837758698, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4142439479217410149, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
       propertyPath: rb
       value: 
       objectReference: {fileID: 336152785}
+    - target: {fileID: 7028223517852200974, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8111321479724187247, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.68
       objectReference: {fileID: 0}
     - target: {fileID: 8111321479724187247, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: -0.35
       objectReference: {fileID: 0}
     - target: {fileID: 8111321479724187247, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -515,7 +597,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7028223517852200974, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 86510292}
   m_SourcePrefab: {fileID: 100100000, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
