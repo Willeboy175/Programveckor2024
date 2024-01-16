@@ -23,7 +23,7 @@ public class RotateAroundPlayer : MonoBehaviour
 
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-            float distanceFromPlayer = 1f;
+            float distanceFromPlayer = 1.25f;
             transform.position = player.position + direction * distanceFromPlayer;
         }
         else
