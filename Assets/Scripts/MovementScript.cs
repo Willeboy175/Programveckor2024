@@ -3,52 +3,96 @@ using System.Collections.Generic;
 using UnityEngine;
 public class MovementScript : MonoBehaviour
 {
-    public Rigidbody2D rb;
-    [SerializeField] float movementSpeed = 4f; //hastigheten för att gå framåt och bakåt
-    [SerializeField] float jumpPower = 5f; //bestämmer hur högt man kan hoppa
-    [SerializeField] float airMovementSpeed = 2f; //justerar hastigheten i luften
-    [SerializeField] LayerMask mask;
-    bool isGrounded1; //kollar om man är på marken
-    bool isGrounded2;
-    private bool _canMove; //Kollar om spelaren får röra på sig
-    [SerializeField] float interactionRadius = 2f;
-    [SerializeField] LayerMask trashcanLayer;
-    [SerializeField] Collider2D playerCollider2D;
+    [Header("Movement")]
+    public float movementSpeed = 5f; //hastigheten för att gå framåt och bakåt
+    public float jumpPower = 7.5f; //bestämmer hur högt man kan hoppa
+    public float groundMaxVelocityChange = 0.05f; //Hur snabbt spelaren kan ändra riktning på marken
+    [Space]
+
+    [Header("Air movement")]
+    public float airMaxVelocityChange = 0.015f; //Hur snabbt spelaren kan ändra riktning i luften
+    public float airMovementMultiplier = 0.8f; //justerar hastigheten i luften
+    [Space]
+
+    [Header("Ground Checks")]
+    public LayerMask groundMask;
+    public float raycastLength = 1.1f;
+    [Space]
+
+    [Header("Other")]
+    public float interactionRadius = 2f;
+    public LayerMask trashcanLayer;
+    public Collider2D playerCollider2D;
     public DashScript DashScript;
+
+    private Rigidbody2D rb;
+    private float playerInput;
+    private bool isGrounded1; //kollar om man är på marken
+    private bool isGrounded2;
+    private bool _canMove; //Kollar om spelaren får röra på sig
+
     public bool canMove
     {  
         get { return _canMove; }
         set { _canMove = value; }
     }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         canMove = true;
     }
+
     void Update()
     {
-        if (canMove)
+        playerInput = Input.GetAxis("Horizontal");
+
+        GroundCheck();
+
+        if (canMove) //Om spelaren kan röra sig
         {
-            float horz = Input.GetAxis("Horizontal");
-
-            isGrounded1 = Physics2D.Raycast(transform.position + new Vector3(0.45f, 0, 0), -transform.up, 1.1f, mask); //Raycast som skickar ut en stråle för att kolla om spelaren befinner sig på marken eller inte
-            isGrounded2 = Physics2D.Raycast(transform.position + new Vector3(-0.45f, 0,0), -transform.up, 1.1f, mask);
-
-            Debug.DrawRay(transform.position + new Vector3(0.45f, 0, 0), -transform.up * 1.1f);
-            Debug.DrawRay(transform.position + new Vector3(-0.45f, 0, 0), -transform.up * 1.1f);
-
             if (isGrounded1 == true || isGrounded2 == true) //om man är på marken
             {
-                rb.velocity = new Vector2(movementSpeed * horz, rb.velocity.y); //så rör man sig så här snabbt
-                if (Input.GetKeyDown(KeyCode.Space)) //och hoppar
+                rb.velocity = rb.velocity + CalculateMovement(movementSpeed, groundMaxVelocityChange);
+
+                if (Input.GetKeyDown(KeyCode.Space)) //Om spelaren hoppar
                 {
                     rb.velocity = new Vector2(rb.velocity.x, jumpPower); //så här högt
                 }
             }
-            else //annars
+            else //om spelaren är i luften
             {
-                rb.velocity = new Vector2(airMovementSpeed * horz, rb.velocity.y); //färdas man så här snabbt i luften
+                rb.velocity = rb.velocity + CalculateMovement(movementSpeed * airMovementMultiplier, airMaxVelocityChange);
             }
         }
+    }
+
+    void GroundCheck()
+    {
+        isGrounded1 = Physics2D.Raycast(transform.position + new Vector3(0.45f, 0, 0), -transform.up, raycastLength, groundMask); //Raycast som skickar ut en stråle för att kolla om spelaren befinner sig på marken eller inte
+        isGrounded2 = Physics2D.Raycast(transform.position + new Vector3(-0.45f, 0, 0), -transform.up, raycastLength, groundMask);
+
+        Debug.DrawRay(transform.position + new Vector3(0.45f, 0, 0), -transform.up * raycastLength);
+        Debug.DrawRay(transform.position + new Vector3(-0.45f, 0, 0), -transform.up * raycastLength);
+    }
+
+    Vector2 CalculateMovement(float speed, float maxVelocityChange)
+    {
+        //Get players input
+        Vector2 targetVelocity = new Vector2(playerInput, 0);
+        targetVelocity = transform.TransformDirection(targetVelocity);
+
+        //Calculate target velocity
+        targetVelocity *= speed;
+
+        //Players current velocity
+        Vector2 velocity = rb.velocity;
+
+        Vector2 velocityChange = targetVelocity - velocity;
+
+        velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
+        velocityChange.y += rb.velocity.y;
+
+        return velocityChange;
     }
 }
