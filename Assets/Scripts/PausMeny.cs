@@ -19,7 +19,7 @@ public class PausMeny : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))  //När man trycker på "escape" dyker paus menyn upp och tiden fryser
         {
-            if (isPaused == true)
+            if (isPaused == true) //om spelet redan är pausat när man trycker "escape" så startar det igen.
             {
                 ResumeButton();
             }
@@ -36,13 +36,13 @@ public class PausMeny : MonoBehaviour
         Time.timeScale = 1f;
         _PausMeny.SetActive(false);
     }
-    public void PauseGame()
+    public void PauseGame() //när spelet är pausat aktiveras paus-menyn.
     {
         isPaused = true;
         Time.timeScale = 0f;
         _PausMeny.SetActive(true);
     }
-    public void Menu()
+    public void Menu() // byter till huvudmeny-scenen
     {
         SceneManager.LoadScene(1);
     }
