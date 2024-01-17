@@ -13,29 +13,36 @@ public class MovementSounds : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (movementKeyPressed)
+        if (movementKeyPressed == true)
         {
             if (other.tag == "Ground" && !Running.isPlaying)
             {
-                Running.volume = Random.Range(0.5f, 0.7f);
+                Running.volume = Random.Range(0.3f, 0.5f);
                 Running.pitch = Random.Range(0.95f, 1.05f);
                 Running.Play();
-            }
+            }          
         }
-
-        
-    }
-    void OnTriggerExit2D(Collider2D other)
-    {
         if (movementKeyPressed == false)
         {
             //Kollar om kollisionen är med ett object som har tagen Ground har den det så slutar den spela ljudet
-            if (other.tag == "Ground" && Running.isPlaying)
+            if (other.tag == "Ground")
+            {
+                print("Stop");
+                Running.Stop();
+            }  
+
+        }
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (movementKeyPressed)
+        {
+            
+            if (other.tag == "Ground")
             {
                 print("Stop");
                 Running.Stop();
             }
-           
         }
     }
     void Update()
