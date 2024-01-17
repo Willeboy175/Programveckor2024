@@ -287,6 +287,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &561632631 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8367621272017522035, guid: d37d555d5fb20104b96577cd37f668b2, type: 3}
+  m_PrefabInstance: {fileID: 3263102496296854901}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04a7caf08ef71624c8392f13c87522ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &610402722 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6878020915148783514, guid: d37d555d5fb20104b96577cd37f668b2, type: 3}
@@ -11590,6 +11601,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4552300431244449834, guid: d37d555d5fb20104b96577cd37f668b2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 561632631}
+    - target: {fileID: 4552300431244449834, guid: d37d555d5fb20104b96577cd37f668b2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PausMeny, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5207160798152866928, guid: d37d555d5fb20104b96577cd37f668b2, type: 3}
       propertyPath: m_Name
       value: Uppdaterad CameraPrefab

@@ -23,7 +23,7 @@ public class PausMeny : MonoBehaviour
             {
                 ResumeButton();
             }
-            else
+            else // annars pausas det
             {
                 PauseGame();
             }
@@ -46,5 +46,9 @@ public class PausMeny : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
-
+    public void Restart() // startar om scenen samt ändrar tillbaka tiden från 0 till 1
+    {
+        SceneManager.LoadScene("GameScene"); 
+        Time.timeScale = 1f;
+    }
 }
