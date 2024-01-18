@@ -26,18 +26,23 @@ public class SoptunnaScript : MonoBehaviour
 
         if (colliders != null)
         {
-
+            interactionText.SetActive(true);
             playerMovement = colliders.GetComponent<MovementScript>();
 
             // Check if the playerMovement component is not null
             if (playerMovement != null && interactKeyPressed)
             {
-                    InteractWithTrashcan(playerMovement);
+                InteractWithTrashcan(playerMovement);
             }
-        } else if (playerMovement != null && interactKeyPressed)
+        } 
+        else if (playerMovement != null && interactKeyPressed)
         {
             ExitTrashcan(playerMovement);
             playerMovement = null;
+        }
+        else
+        {
+            interactionText.SetActive(false);
         }
     }
     void InteractWithTrashcan(MovementScript playerMovement)
