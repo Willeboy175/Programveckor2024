@@ -7,11 +7,13 @@ public class MainMenu : MonoBehaviour
 {
     public bool isStart;
     public bool isQuit;
+    public AudioSource Click;
 
     public void PlayGame()
     {
         if (isStart)
         {
+            Click.Play();         
             SceneManager.LoadScene(2); // Öppnar spel-scenen
 
         }

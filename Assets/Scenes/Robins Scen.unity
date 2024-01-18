@@ -312,6 +312,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1987405189707558259, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 1987405189707558259, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
       propertyPath: m_Name
       value: Spelare med Shooting (1)
       objectReference: {fileID: 0}
@@ -322,6 +326,14 @@ PrefabInstance:
     - target: {fileID: 2237731690837758698, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
       propertyPath: Loop
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237731690837758698, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237731690837758698, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+      propertyPath: MinDistance
+      value: 1.1844475
       objectReference: {fileID: 0}
     - target: {fileID: 2237731690837758698, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
       propertyPath: m_audioClip
@@ -339,17 +351,29 @@ PrefabInstance:
       propertyPath: ShootingSound
       value: 
       objectReference: {fileID: 1591784177}
+    - target: {fileID: 5839655169129588971, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5839655169129588971, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7028223517852200974, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
       propertyPath: m_Icon
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7028223517852200974, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8111321479724187247, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8111321479724187247, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: -0.18
       objectReference: {fileID: 0}
     - target: {fileID: 8111321479724187247, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
       propertyPath: m_LocalPosition.z
