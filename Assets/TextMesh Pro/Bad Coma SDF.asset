@@ -73,9 +73,9 @@ Material:
     - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 1
-    - _ScaleRatioB: 1
-    - _ScaleRatioC: 1
+    - _ScaleRatioA: 0.8333333
+    - _ScaleRatioB: 0.6770833
+    - _ScaleRatioC: 0.6770833
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -120,9 +120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Bad Coma SDF
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: -485685194
   material: {fileID: -7561694296805362612}
-  materialHashCode: 0
+  materialHashCode: -871277738
   m_Version: 1.1.0
   m_SourceFontFileGUID: 3b227931797791f43be1b08dfd09ac1d
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 3b227931797791f43be1b08dfd09ac1d, type: 3}
@@ -147,7 +147,7 @@ MonoBehaviour:
     m_SubscriptSize: 0.5
     m_UnderlineOffset: -12.974609
     m_UnderlineThickness: 6.665039
-    m_StrikethroughOffset: 0
+    m_StrikethroughOffset: 19.2
     m_StrikethroughThickness: 6.665039
     m_TabWidth: 34
   m_GlyphTable:
