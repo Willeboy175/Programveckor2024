@@ -200,6 +200,7 @@ MonoBehaviour:
   rb: {fileID: 627870218790990876}
   dashForce: 5
   isDashing: 0
+  dashCooldown: 1.5
   movementScript: {fileID: 4142439479217410149}
 --- !u!114 &3340951795237671330
 MonoBehaviour:
@@ -425,7 +426,7 @@ GameObject:
   - component: {fileID: 4854626630424469569}
   - component: {fileID: 2237731690837758698}
   - component: {fileID: 2881943653578946110}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: SoundPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
