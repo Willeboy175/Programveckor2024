@@ -18,7 +18,7 @@ public class Shoot : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && Time.time >= nextFireTime)
         {
             ShootingSound.volume = Random.Range(0.45f, 0.6f);
-            ShootingSound.pitch = Random.Range(0.95f, 1.05f);
+            ShootingSound.pitch = Random.Range(0.8f, 0.85f);
             ShootingSound.Play();
             Shooting();
             nextFireTime = Time.time + 1f / fireRate;
