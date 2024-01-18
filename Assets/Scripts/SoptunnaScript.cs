@@ -7,6 +7,7 @@ public class SoptunnaScript : MonoBehaviour
     public bool isInTrashCan = false; // Variable indicating whether the player is currently in the trash can
     public float interactionRadius = 2f; // Radius within which the player can interact with the trash can
     public LayerMask playerLayer; // Layer mask to filter players for interaction
+    public GameObject interactionText;
 
     MovementScript playerMovement;
 
@@ -25,6 +26,7 @@ public class SoptunnaScript : MonoBehaviour
 
         if (colliders != null)
         {
+
             playerMovement = colliders.GetComponent<MovementScript>();
 
             // Check if the playerMovement component is not null
