@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour
         if (isStart)
         {
             Click.Play();         
-            SceneManager.LoadScene(2); // Öppnar spel-scenen
+            SceneManager.LoadScene(1); // Öppnar spel-scenen
 
         }
         if (isQuit)

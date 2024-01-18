@@ -44,11 +44,12 @@ public class PausMeny : MonoBehaviour
     }
     public void Menu() // byter till huvudmeny-scenen
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1f;
     }
     public void Restart() // startar om scenen samt ändrar tillbaka tiden från 0 till 1
     {
-        SceneManager.LoadScene("GameScene"); 
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1f;
     }
 }
