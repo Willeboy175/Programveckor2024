@@ -1403,12 +1403,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 1606323944}
     m_Modifications:
     - target: {fileID: 895222831515694770, guid: 7f9bbb589a9bdad4ea2a4679c000e300, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 895222831515694770, guid: 7f9bbb589a9bdad4ea2a4679c000e300, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1505298059470311872, guid: 7f9bbb589a9bdad4ea2a4679c000e300, type: 3}
       propertyPath: m_Name
       value: VolumeSlider
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401539338049454073, guid: 7f9bbb589a9bdad4ea2a4679c000e300, type: 3}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5422592707673560323, guid: 7f9bbb589a9bdad4ea2a4679c000e300, type: 3}
       propertyPath: m_Pivot.x
@@ -1491,7 +1499,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8856364813172880505, guid: 7f9bbb589a9bdad4ea2a4679c000e300, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8856364813172880505, guid: 7f9bbb589a9bdad4ea2a4679c000e300, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8856364813172880505, guid: 7f9bbb589a9bdad4ea2a4679c000e300, type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
