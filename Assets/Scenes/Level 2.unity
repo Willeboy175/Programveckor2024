@@ -4645,6 +4645,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Byggnad 2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3449200918905451229, guid: 14e4cf1985f4ced49bd477dba47be35e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3466269576744481035, guid: 14e4cf1985f4ced49bd477dba47be35e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 39.51
