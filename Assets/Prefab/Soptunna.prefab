@@ -29,7 +29,7 @@ RectTransform:
   m_GameObject: {fileID: 4544083371884769131}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.009259259, y: 0.009259259, z: 0.009259259}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6716508413640130476}
@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 1}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8899182614671892316
 CanvasRenderer:
@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 6716508413640130476}
   - component: {fileID: 3931156461418114655}
   - component: {fileID: 307168558847058668}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Soptunna
   m_TagString: Untagged
   m_Icon: {fileID: 0}
