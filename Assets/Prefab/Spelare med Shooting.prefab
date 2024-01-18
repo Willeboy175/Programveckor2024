@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8111321479724187247}
   - component: {fileID: 4552329342524444425}
   - component: {fileID: 627870218790990876}
-  - component: {fileID: 8904998255303252295}
+  - component: {fileID: 6912521822733876572}
   - component: {fileID: 4142439479217410149}
   - component: {fileID: 7080562584319546313}
   - component: {fileID: 3340951795237671330}
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 462006373, guid: eba66509aa142f44b9d8d2829daeb7b6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -109,7 +109,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 1.25
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -121,8 +121,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &8904998255303252295
-BoxCollider2D:
+--- !u!70 &6912521822733876572
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -153,19 +153,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.26}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
+  m_Offset: {x: 0, y: -0.25}
   m_Size: {x: 1, y: 1.5}
-  m_EdgeRadius: 0
+  m_Direction: 0
 --- !u!114 &4142439479217410149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,7 +181,7 @@ MonoBehaviour:
   trashcanLayer:
     serializedVersion: 2
     m_Bits: 256
-  playerCollider2D: {fileID: 8904998255303252295}
+  playerCollider2D: {fileID: 6912521822733876572}
   DashScript: {fileID: 7080562584319546313}
   spriteRenderer: {fileID: 4552329342524444425}
 --- !u!114 &7080562584319546313
@@ -226,6 +216,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8727657718295718625, guid: 86174ddf7f972fb4da10b3cb666f5e4e, type: 3}
   bulletForce: 10
   fireRate: 3
+  ShootingSound: {fileID: 0}
 --- !u!114 &-6366756420033655201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,7 +229,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4b115e2c80bca4cb8884e05c54064f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealthBar: {fileID: 0}
+  HealthBar2: {fileID: 0}
+  HealthBar3: {fileID: 0}
   maxHealth: 3
+  GameOverPanel: {fileID: 0}
 --- !u!95 &8923087102741324070
 Animator:
   serializedVersion: 5
@@ -366,8 +361,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51b94a603d5fc2c459a596c5d56b696a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  up: 119
-  down: 115
   left: 97
   right: 100
   movementKeyPressed: 0
