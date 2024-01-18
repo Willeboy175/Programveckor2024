@@ -7,7 +7,7 @@ public class SoptunnaScript : MonoBehaviour
     public bool isInTrashCan = false; // Variable indicating whether the player is currently in the trash can
     public float interactionRadius = 2f; // Radius within which the player can interact with the trash can
     public LayerMask playerLayer; // Layer mask to filter players for interaction
-    public GameObject interactionText;
+    public GameObject interactionText; //Text will appear when the player is close to the trashcan
 
     MovementScript playerMovement;
 
@@ -15,7 +15,6 @@ public class SoptunnaScript : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, interactionRadius);
     }
-    // Update is called once per frame
     void Update()
     {
         // Check for players within the interaction radius
@@ -30,12 +29,12 @@ public class SoptunnaScript : MonoBehaviour
             playerMovement = colliders.GetComponent<MovementScript>();
 
             // Check if the playerMovement component is not null
-            if (playerMovement != null && interactKeyPressed)
+            if (playerMovement != null && Input.GetKeyDown(KeyCode.E))
             {
                 InteractWithTrashcan(playerMovement);
-            }
-        } 
-        else if (playerMovement != null && interactKeyPressed)
+            }        
+        }
+        else if (playerMovement != null && Input.GetKeyDown(KeyCode.E))
         {
             ExitTrashcan(playerMovement);
             playerMovement = null;
@@ -83,7 +82,7 @@ public class SoptunnaScript : MonoBehaviour
         DashScript dashScript = playerMovement.GetComponent<DashScript>();
         if (playerRigidBody2D != null)  // Enable gravity for the player when exiting the trash can
         {
-            playerRigidBody2D.gravityScale = 1f;
+            playerRigidBody2D.gravityScale = 1.25f;
             playerRigidBody2D.velocity = Vector2.zero;
         }
         if (playerSpriteRenderer != null)   // Toggle the visibility of the player's sprite

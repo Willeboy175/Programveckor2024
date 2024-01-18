@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3314825667428480191}
   - component: {fileID: 8107574263244263458}
   - component: {fileID: 6943090835043780769}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: SoundPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -388,6 +388,7 @@ MonoBehaviour:
   rb: {fileID: 1810356876735604090}
   dashForce: 5
   isDashing: 0
+  dashCooldown: 1.5
   movementScript: {fileID: 1636795167414656529}
 --- !u!114 &8496573338807738348
 MonoBehaviour:

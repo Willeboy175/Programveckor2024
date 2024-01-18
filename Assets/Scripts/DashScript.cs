@@ -9,9 +9,8 @@ public class DashScript : MonoBehaviour
     [SerializeField]
     float dashForce = 5;
     public bool isDashing;
-    float dashCooldown = 2.5f;
+    public float dashCooldown = 1.5f;
     float dashTimer;
-    [SerializeField]
     public MovementScript movementScript;
     void Start()
     {
