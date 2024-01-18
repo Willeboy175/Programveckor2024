@@ -40,6 +40,7 @@ public class EnemyMovement : MonoBehaviour
     private float shootTimer;
     private int faceDirection; //1 is equal to facing right and -1 is equal to facing left
     private Vector2 playerPos;
+    public AudioSource Shooting;
 
     // Start is called before the first frame update
     void Start()
@@ -147,10 +148,16 @@ public class EnemyMovement : MonoBehaviour
             if (faceDirection == 1)
             {
                 GameObject bullet = Instantiate(enemyBullet, rb.position, Quaternion.Euler(0, 0, 0));
+                Shooting.volume = Random.Range(0.2f, 0.3f);
+                Shooting.pitch = Random.Range(0.95f, 1.05f);
+                Shooting.Play();
             }
             else if (faceDirection == -1)
             {
                 GameObject bullet = Instantiate(enemyBullet, rb.position, Quaternion.Euler(0, 0, 180));
+                Shooting.volume = Random.Range(0.2f, 0.3f);
+                Shooting.pitch = Random.Range(0.95f, 1.05f);
+                Shooting.Play();
             }
             
             shootTimer = 0;
