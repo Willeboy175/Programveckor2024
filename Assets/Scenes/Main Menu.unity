@@ -319,8 +319,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Escape Horizon: City of Shadows'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b2520ae1f8ddc1a4593e721da77d5269, type: 2}
-  m_sharedMaterial: {fileID: -7300679378332448313, guid: b2520ae1f8ddc1a4593e721da77d5269, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 98973bf44bc7cb64381aaba1c57ba285, type: 2}
+  m_sharedMaterial: {fileID: 1470534808839788954, guid: 98973bf44bc7cb64381aaba1c57ba285, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
