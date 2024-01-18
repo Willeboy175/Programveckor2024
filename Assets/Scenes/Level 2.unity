@@ -684,6 +684,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spelare med Shooting
       objectReference: {fileID: 0}
+    - target: {fileID: 2237731690837758698, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+      propertyPath: Priority
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4854626630424469569, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+      propertyPath: movementKeyPressed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8111321479724187247, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -727,8 +735,61 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7028223517852200974, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 945643553}
   m_SourcePrefab: {fileID: 100100000, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+--- !u!1 &945643552 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7028223517852200974, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+  m_PrefabInstance: {fileID: 945643551}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &945643553
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945643552}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.04123044, y: -0.6679306}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.09293413, y: 1.0164921}
+  m_EdgeRadius: 0
 --- !u!1001 &1076754585
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1059,7 +1120,7 @@ GameObject:
   - component: {fileID: 1490035057}
   - component: {fileID: 1490035056}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: MusicPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1077,7 +1138,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 6722848300058794532, guid: 26b216f8cd72c58489da2535e5528a64, type: 2}
   m_audioClip: {fileID: 8300000, guid: 579b5682cda5ba74fbc8e66ca84ab45f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.75
+  m_Volume: 0.5
   m_Pitch: 0.9
   Loop: 1
   Mute: 0
@@ -1170,7 +1231,7 @@ Transform:
   m_GameObject: {fileID: 1490035055}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -30, y: -10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
