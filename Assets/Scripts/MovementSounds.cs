@@ -13,7 +13,7 @@ public class MovementSounds : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (movementKeyPressed == true)
+        if (movementKeyPressed == true)// Om A eller D är nedtryckt ska den spela upp ljudet från den tillagda AudioSourcen
         {
             if (other.tag == "Ground" && !Running.isPlaying)
             {
@@ -22,9 +22,8 @@ public class MovementSounds : MonoBehaviour
                 Running.Play();
             }          
         }
-        if (movementKeyPressed == false)
+        if (movementKeyPressed == false)// Om A eller D inte är nedtryckta ska den sluta spela upp ljudet.
         {
-            //Kollar om kollisionen är med ett object som har tagen Ground har den det så slutar den spela ljudet
             if (other.tag == "Ground")
             {
                 print("Stop");
@@ -33,7 +32,7 @@ public class MovementSounds : MonoBehaviour
 
         }
     }
-    void OnTriggerExit2D(Collider2D other)
+    void OnTriggerExit2D(Collider2D other)// Om boxkollidern slutar vara i kontakt med Triggern ska den sluta spela ljudet
     {
         if (movementKeyPressed)
         {
@@ -45,7 +44,7 @@ public class MovementSounds : MonoBehaviour
             }
         }
     }
-    void Update()
+    void Update() // Kollar om A eller D är nedtryckt
     {
         if (Input.GetKey(left) || Input.GetKey(right))
         {

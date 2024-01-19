@@ -17,10 +17,10 @@ public class AudioSlider : MonoBehaviour
 
     public void OnChangeSlider(float Value)
     {
-        ValueText.SetText($"{Value.ToString("N4")}");
+        ValueText.SetText($"{Value.ToString("N4")}"); // ger oss et tvärde med 4 decimaler
         
         switch(MixMode)
-        {
+        { // hur ljudet ändras när man drar i slidern
             case AudioMixMode.LogrithmicMixerVolume:
                 Mixer.SetFloat("Volume", Mathf.Log10(Value) * 20);
                 break;

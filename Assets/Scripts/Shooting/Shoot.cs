@@ -30,6 +30,7 @@ public class Shoot : MonoBehaviour
         // Definierar muspekarens position och omvandlar det till den positionen som skotten ska åka emot
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+        // vart den ska skjuta mot
         Vector2 shootDirection = (mousePosition - (Vector2)gunBarrelTransform.position).normalized;
 
         //Skapar skottet som ska skjutas och bestämmer var skottet ska skapas

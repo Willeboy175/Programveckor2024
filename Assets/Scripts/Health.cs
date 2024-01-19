@@ -25,6 +25,7 @@ public class Health : MonoBehaviour
     }
     void Update()
     {
+        //Om hälsan är under ett visst värde inaktiveras en del av healthbaren 
         if (currentHealth == 2)
         {
             HealthBar3.SetActive(false);
@@ -44,11 +45,11 @@ public class Health : MonoBehaviour
             HealthBar3.SetActive(true);
         }
     }
-    // När gubben dör tas objectet bort
+    // När gubben dör tas den bort, healthbaren tas bort och game over screenen visas upp
     void Die()
     {
-        GameOverPanel.SetActive(true);
-        HealthBar.SetActive(false);
-        gameObject.SetActive(false);
+        GameOverPanel.SetActive(true);//-Malte & Edvin
+        HealthBar.SetActive(false);//-Malte
+        gameObject.SetActive(false);//-Robin
     }
 }

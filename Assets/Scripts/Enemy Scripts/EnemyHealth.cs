@@ -16,7 +16,7 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth -= damage;
 
-        if (currentHealth <= 0)// säger att gubbe ska dö om hälsan blir 0
+        if (currentHealth <= 0)// Om fiendens hälsa är mindre än än 0 tas den bort
         {
             Die();
         }
