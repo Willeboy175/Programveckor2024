@@ -49,14 +49,14 @@ public class PausMeny : MonoBehaviour
     }
     public void Menu() // byter till huvudmeny-scenen
     {
-        Click.Play();
         SceneManager.LoadScene(0);
         Time.timeScale = 1f;
+        Click.Play();
     }
     public void Restart() // startar om scenen samt ändrar tillbaka tiden från 0 till 1
     {
-        Click.Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1f;
+        Click.Play();
     }
 }
