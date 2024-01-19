@@ -11,7 +11,7 @@ public class RotateAroundPlayer : MonoBehaviour
     {
         if (player != null)
         {
-            Vector3 mousePosition = Input.mousePosition;
+            Vector3 mousePosition = Input.mousePosition; //Muspekarens position
             mousePosition.z = Vector3.Distance(player.position, Camera.main.transform.position);
 
             Vector3 targetPosition = Camera.main.ScreenToWorldPoint(mousePosition);
@@ -23,7 +23,7 @@ public class RotateAroundPlayer : MonoBehaviour
 
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-            float distanceFromPlayer = 1.25f;
+            float distanceFromPlayer = 1.25f; // Distansen den ska holla ifrån spelaren
             transform.position = player.position + direction * distanceFromPlayer;
         }
         else
