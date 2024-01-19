@@ -71,12 +71,12 @@ public class MovementScript : MonoBehaviour
             GroundCheck();
             if (isGrounded1 == true || isGrounded2 == true) //om man är på marken
             {
+                rb.velocity = rb.velocity + CalculateMovement(movementSpeed, groundMaxVelocityChange);
+
                 if (Input.GetKeyDown(KeyCode.Space)) //Om spelaren hoppar
                 {
                     rb.velocity = new Vector2(rb.velocity.x, jumpPower); //så här högt
                 }
-
-                rb.velocity = rb.velocity + CalculateMovement(movementSpeed, groundMaxVelocityChange);
             }
             else //om spelaren är i luften
             {
