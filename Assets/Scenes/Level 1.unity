@@ -3197,10 +3197,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6716508413640130476, guid: c3b23b4986baffe439a816599430282a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6716508413640130476, guid: c3b23b4986baffe439a816599430282a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 49.48
       objectReference: {fileID: 0}
@@ -3244,8 +3240,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Soptunna
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
