@@ -52,28 +52,31 @@ public class MovementScript : MonoBehaviour
     void Update()
     {
         playerInput = Input.GetAxis("Horizontal");
+        
+        //Flip the sprite based on player input
+        if (playerInput < 0) // Moving left (A key)
+        {
+            spriteRenderer.flipX = true; //Flip the sprite
+        }
+        else if (playerInput > 0) //Moving right (D key)
+        {
+            spriteRenderer.flipX = false; //Unflip the sprite
+        }
+    }
 
-        GroundCheck();
-
+    void FixedUpdate()
+    {
         if (canMove) //Om spelaren kan röra sig
         {
+            GroundCheck();
             if (isGrounded1 == true || isGrounded2 == true) //om man är på marken
             {
-                //Flip the sprite based on player input
-                if (playerInput < 0) // Moving left (A key)
-                {
-                    spriteRenderer.flipX = true; //Flip the sprite
-                }
-                else if (playerInput > 0) //Moving right (D key)
-                {
-                    spriteRenderer.flipX = false; //Unflip the sprite
-                }
-                rb.velocity = rb.velocity + CalculateMovement(movementSpeed, groundMaxVelocityChange);
-                
                 if (Input.GetKeyDown(KeyCode.Space)) //Om spelaren hoppar
                 {
                     rb.velocity = new Vector2(rb.velocity.x, jumpPower); //så här högt
                 }
+
+                rb.velocity = rb.velocity + CalculateMovement(movementSpeed, groundMaxVelocityChange);
             }
             else //om spelaren är i luften
             {
