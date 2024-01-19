@@ -792,7 +792,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Soptunna
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 908368732691340948, guid: c3b23b4986baffe439a816599430282a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
