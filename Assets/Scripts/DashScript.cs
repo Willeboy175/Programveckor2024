@@ -27,7 +27,7 @@ public class DashScript : MonoBehaviour
         else if (Input.GetKey(KeyCode.D))
         {
             dashDirection = Vector2.right;
-        }
+        }   
         rb.AddForce(dashDirection * dashForce, ForceMode2D.Impulse);
         Debug.Log("Dash Direction: " + dashDirection);
         isDashing = true;

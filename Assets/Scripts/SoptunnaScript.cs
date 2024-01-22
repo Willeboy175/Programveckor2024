@@ -8,8 +8,10 @@ public class SoptunnaScript : MonoBehaviour
     public float interactionRadius = 2f; // Radius within which the player can interact with the trash can
     public LayerMask playerLayer; // Layer mask to filter players for interaction
     public GameObject interactionText; //Text will appear when the player is close to the trashcan
+    public GameObject gun;
 
     MovementScript playerMovement;
+    
 
     private void OnDrawGizmosSelected()
     {
@@ -19,24 +21,20 @@ public class SoptunnaScript : MonoBehaviour
     {
         // Check for players within the interaction radius
         Collider2D colliders = Physics2D.OverlapCircle(transform.position, interactionRadius, playerLayer);
-
-        // Check if the interaction key (E) is pressed
-        bool interactKeyPressed = Input.GetKeyDown(KeyCode.E);
-
         if (colliders != null)
         {
             interactionText.SetActive(true);
             playerMovement = colliders.GetComponent<MovementScript>();
 
-            // Check if the playerMovement component is not null
+            // Check if the playerMovement component is not null && Check if the interaction key (E) is pressed
             if (playerMovement != null && Input.GetKeyDown(KeyCode.E))
             {
-                InteractWithTrashcan(playerMovement);
+                InteractWithTrashcan(playerMovement, gun);
             }        
         }
         else if (playerMovement != null && Input.GetKeyDown(KeyCode.E))
         {
-            ExitTrashcan(playerMovement);
+            ExitTrashcan(playerMovement, gun);
             playerMovement = null;
         }
         else
@@ -44,60 +42,59 @@ public class SoptunnaScript : MonoBehaviour
             interactionText.SetActive(false);
         }
     }
-    void InteractWithTrashcan(MovementScript playerMovement)
+    void InteractWithTrashcan(MovementScript playerMovement, GameObject gun)
     {
         Debug.Log("Entering the trash can");
         // Get relevant components from the player
         SpriteRenderer playerSpriteRenderer = playerMovement.GetComponent<SpriteRenderer>();
-        Collider2D playerCollider2D = playerMovement.GetComponent<Collider2D>();
         Rigidbody2D playerRigidBody2D = playerMovement.GetComponent<Rigidbody2D>();
-        DashScript dashScript = playerMovement.GetComponent<DashScript>();
+        Shoot shoot = playerMovement.GetComponent<Shoot>();
+        SpriteRenderer gunSprite = gun.GetComponent<SpriteRenderer>();
         if (playerRigidBody2D != null)  // Disable gravity for the player when in the trash can
         {
-            playerRigidBody2D.gravityScale = 0f;
+            playerRigidBody2D.simulated = false;
             playerRigidBody2D.velocity = Vector2.zero;
         }
         if (playerSpriteRenderer != null)   // Toggle the visibility of the player's sprite
         {
             playerSpriteRenderer.enabled = false;
         }
-        if (playerCollider2D != null)   // Toggle the player's collider
+        if (gunSprite != null)
         {
-            playerCollider2D.enabled = false;
+            gunSprite.enabled = false;
         }
-        if (dashScript != null)   // Toggle dash script to enable/disable dash ability
+        if (shoot != null)
         {
-            dashScript.enabled = false;
+            shoot.enabled = false;
         }
-        playerMovement.canMove = false;  // Toggle the player's ability to move
         isInTrashCan = !isInTrashCan;  // Toggle the isInTrashCan variable
     }
-    void ExitTrashcan(MovementScript playerMovement)
+    void ExitTrashcan(MovementScript playerMovement, GameObject gun)
     {
         Debug.Log("Exiting the trash can");
         // Get relevant components from the player
         SpriteRenderer playerSpriteRenderer = playerMovement.GetComponent<SpriteRenderer>();
-        Collider2D playerCollider2D = playerMovement.GetComponent<Collider2D>();
         Rigidbody2D playerRigidBody2D = playerMovement.GetComponent<Rigidbody2D>();
-        DashScript dashScript = playerMovement.GetComponent<DashScript>();
+        Shoot shoot = playerMovement.GetComponent<Shoot>();
+        SpriteRenderer gunSprite = gun.GetComponent<SpriteRenderer>();
+
         if (playerRigidBody2D != null)  // Enable gravity for the player when exiting the trash can
         {
-            playerRigidBody2D.gravityScale = 1.25f;
+            playerRigidBody2D.simulated = true;
             playerRigidBody2D.velocity = Vector2.zero;
         }
         if (playerSpriteRenderer != null)   // Toggle the visibility of the player's sprite
         {
             playerSpriteRenderer.enabled = true;
         }
-        if (playerCollider2D != null)   // Toggle the player's collider
+        if (gunSprite != null)
         {
-            playerCollider2D.enabled = true;
+            gunSprite.enabled = true;
         }
-        if (dashScript != null)   // Toggle dash script to enable/disable dash ability
+        if (shoot != null)
         {
-            dashScript.enabled = true;
-        }        
-        playerMovement.canMove = true; // Toggle the player's ability to move
+            shoot.enabled = true;
+        }
         isInTrashCan = false;  // Reset the isInTrashCan variable to false
     }
 }

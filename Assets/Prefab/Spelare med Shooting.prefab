@@ -219,6 +219,7 @@ MonoBehaviour:
   bulletForce: 10
   fireRate: 3
   ShootingSound: {fileID: 7702093149167901770}
+  gunSprite: {fileID: 1481903460790453875}
 --- !u!114 &-6366756420033655201
 MonoBehaviour:
   m_ObjectHideFlags: 0

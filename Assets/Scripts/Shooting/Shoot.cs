@@ -9,8 +9,10 @@ public class Shoot : MonoBehaviour
     [SerializeField] public float bulletForce = 10f; // hur snabbt skotten åker
     [SerializeField] public float fireRate = 1f; // Hur snabbt man skjuter
     public AudioSource ShootingSound;
-
     private float nextFireTime;
+
+    public SpriteRenderer gunSprite;
+
 
     void Update()
     {
