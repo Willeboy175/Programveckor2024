@@ -616,6 +616,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spelare med Shooting
       objectReference: {fileID: 0}
+    - target: {fileID: 6912521822733876572, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8111321479724187247, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.146621
@@ -11763,12 +11767,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6abf6f57c6899da4790b1bc59dda20e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthBar: {fileID: 0}
-  HealthBar2: {fileID: 0}
-  HealthBar3: {fileID: 0}
-  maxHealth: 3
-  currentHealth: 0
-  GameOverPanel: {fileID: 0}
 --- !u!1001 &3263102496296854901
 PrefabInstance:
   m_ObjectHideFlags: 0

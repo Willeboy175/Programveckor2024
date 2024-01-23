@@ -5,16 +5,26 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public GameObject HealthBar, HealthBar2, HealthBar3; //Ska visa spelaren hur mycket hälsa man har kvar
-    public int maxHealth = 3; //sätter hälsan av gubben
-    public int currentHealth; // Är en check på hur mycket hälsa gubben har kvar
+    public static int maxHealth = 3; //sätter hälsan av gubben
+    public static int currentHealth; // Är en check på hur mycket hälsa gubben har kvar
     public GameObject GameOverPanel; //Visar en panel när man dör
 
-    void Start()
+    private void Start()
     {
-        currentHealth = maxHealth; // när man startar så syncar currenthealth med max health
+        currentHealth = maxHealth;
     }
 
-    public void TakeDamage(int damage) // är en check på när gubben tar skada
+    public void Heal(int amount)
+    {
+        currentHealth += amount;
+
+        // Ensure the player's health doesn't exceed the maximum health
+        currentHealth = Mathf.Min(currentHealth, maxHealth);
+
+        // You can also update a health bar UI here if you have one
+        Debug.Log("Player healed! Current Health: " + currentHealth);
+    }
+public void TakeDamage(int damage) // är en check på när gubben tar skada
     {
         currentHealth -= damage;
 
