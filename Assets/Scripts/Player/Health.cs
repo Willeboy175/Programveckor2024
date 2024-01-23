@@ -9,9 +9,12 @@ public class Health : MonoBehaviour
     public static int currentHealth; // Är en check på hur mycket hälsa gubben har kvar
     public GameObject GameOverPanel; //Visar en panel när man dör
 
+    public static int getCurrentHealth;
+    public static int getMaxHealth;
     private void Start()
     {
         currentHealth = maxHealth;
+        getMaxHealth = maxHealth;
     }
 
     public void Heal(int amount)
@@ -63,6 +66,7 @@ public void TakeDamage(int damage) // är en check på när gubben tar skada
             HealthBar2.SetActive(true);
             HealthBar3.SetActive(true);
         }
+        getCurrentHealth = currentHealth;
     }
     // När gubben dör tas den bort, healthbaren tas bort och game over screenen visas upp
     void Die()

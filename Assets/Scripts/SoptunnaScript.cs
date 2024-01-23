@@ -12,7 +12,6 @@ public class SoptunnaScript : MonoBehaviour
 
     MovementScript playerMovement;
     
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, interactionRadius);
