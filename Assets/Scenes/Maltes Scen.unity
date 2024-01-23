@@ -464,18 +464,10 @@ PrefabInstance:
       propertyPath: GameOverPanel
       value: 
       objectReference: {fileID: 231431324}
-    - target: {fileID: 627870218790990876, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
-      propertyPath: m_Simulated
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1987405189707558259, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
       propertyPath: m_Name
       value: Spelare med Shooting
       objectReference: {fileID: 0}
-    - target: {fileID: 3340951795237671330, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
-      propertyPath: gunSprite
-      value: 
-      objectReference: {fileID: 354531770}
     - target: {fileID: 8111321479724187247, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.42
@@ -524,11 +516,6 @@ PrefabInstance:
 --- !u!4 &354531769 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8111321479724187247, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
-  m_PrefabInstance: {fileID: 354531768}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &354531770 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 1481903460790453875, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
   m_PrefabInstance: {fileID: 354531768}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1609636686 stripped
