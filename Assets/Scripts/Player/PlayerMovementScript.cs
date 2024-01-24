@@ -7,13 +7,13 @@ public class PlayerMovementScript : MonoBehaviour
     [Header("Movement")]
     public float currentSpeed;
     public float movementSpeed = 5f; //hastigheten för att gå framåt och bakåt
-    public float groundAcceleration = 12f; //Hur snabbt spelaren kan ändra riktning på marken
+    public float groundAcceleration = 0.5f; //Hur snabbt spelaren kan ändra riktning på marken
     public float jumpForce = 7.5f; //bestämmer hur högt man kan hoppa
     [Space]
 
     [Header("Air movement")]
     public float airSpeedMultiplier = 0.8f; //justerar hastigheten i luften
-    public float airAcceleration = 0.015f; //Hur snabbt spelaren kan ändra riktning i luften
+    public float airAcceleration = 0.2f; //Hur snabbt spelaren kan ändra riktning i luften
     [Space]
 
     [Header("Ground Checks")]
@@ -37,11 +37,6 @@ public class PlayerMovementScript : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>(); // Get the SpriteRenderer component
     }
 
-    void OnTriggerStay2D(Collider2D collision)
-    {
-        grounded = true;
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -54,6 +49,16 @@ public class PlayerMovementScript : MonoBehaviour
         {
             spriteRenderer.flipX = false; //Unflip the sprite
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        grounded = true;
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        grounded = false;
     }
 
     void FixedUpdate()
@@ -75,8 +80,6 @@ public class PlayerMovementScript : MonoBehaviour
         {
             Movement(movementSpeed, airAcceleration, airSpeedMultiplier);
         }
-
-        grounded = false;
     }
 
     void Movement(float speed, float acceleration, float multiplier)
@@ -95,9 +98,13 @@ public class PlayerMovementScript : MonoBehaviour
 
         //Sets acceleration to velocityChange
         velocityChange.x = Mathf.Clamp(velocityChange.x, -acceleration, acceleration);
-        velocityChange.y += rb.velocity.y;
 
         //Adds velocityChange to rigidbody
         rb.velocity += new Vector2(velocityChange.x * multiplier, 0);
+    }
+
+    void Dash()
+    {
+
     }
 }
