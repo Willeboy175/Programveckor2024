@@ -28,7 +28,7 @@ public class PlayerMovementScript : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 movement;
     private float playerInput;
-    private bool grounded;
+    public bool grounded;
 
     // Start is called before the first frame update
     void Start()
@@ -66,7 +66,7 @@ public class PlayerMovementScript : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                rb.AddForce(new Vector2(0, jumpForce));
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             }
 
             Movement(movementSpeed, groundAcceleration, 1);
@@ -98,6 +98,6 @@ public class PlayerMovementScript : MonoBehaviour
         velocityChange.y += rb.velocity.y;
 
         //Adds velocityChange to rigidbody
-        rb.velocity += new Vector2(velocityChange.x * multiplier, velocityChange.y);
+        rb.velocity += new Vector2(velocityChange.x * multiplier, 0);
     }
 }
