@@ -11,13 +11,18 @@ public class PlayerMovementScript : MonoBehaviour
     public float jumpForce = 7.5f; //bestämmer hur högt man kan hoppa
     [Space]
 
+    [Header("Dash")]
+    public float dashSpeed = 8f;
+    public float dashDuration = 0.2f;
+    public float dashCooldown = 1.5f;
+    [Space]
+
     [Header("Air movement")]
     public float airSpeedMultiplier = 0.8f; //justerar hastigheten i luften
     public float airAcceleration = 0.2f; //Hur snabbt spelaren kan ändra riktning i luften
     [Space]
 
     [Header("Ground Checks")]
-    public LayerMask groundMask;
     [Space]
 
     [Header("Other")]
@@ -26,9 +31,11 @@ public class PlayerMovementScript : MonoBehaviour
     public SpriteRenderer spriteRenderer;
 
     private Rigidbody2D rb;
-    private Vector2 movement;
-    private float playerInput;
+    public float playerInput;
+    public float dashTimer;
     public bool grounded;
+    public bool jumping;
+    public bool dashing;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +47,26 @@ public class PlayerMovementScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        playerInput = Input.GetAxisRaw("Horizontal"); //Get player input
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            jumping = true;
+        }
+        else
+        {
+            jumping = false;
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift) && playerInput != 0)
+        {
+            dashing = true;
+        }
+        else
+        {
+            dashing = false;
+        }
+
         //Flip the sprite based on player input
         if (playerInput < 0) // Moving left (A key)
         {
@@ -51,6 +78,7 @@ public class PlayerMovementScript : MonoBehaviour
         }
     }
 
+    //If ground trigger box is touching something
     void OnTriggerEnter2D(Collider2D collision)
     {
         grounded = true;
@@ -63,13 +91,18 @@ public class PlayerMovementScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        playerInput = Input.GetAxisRaw("Horizontal");
+        dashTimer += Time.fixedDeltaTime;
 
         currentSpeed = rb.velocity.x;
 
+        if (dashing && dashTimer > dashCooldown)
+        {
+            Dash(dashSpeed, dashDuration);
+        }
+
         if (grounded)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (jumping)
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             }
@@ -103,7 +136,7 @@ public class PlayerMovementScript : MonoBehaviour
         rb.velocity += new Vector2(velocityChange.x * multiplier, 0);
     }
 
-    void Dash()
+    void Dash(float speed, float duration)
     {
 
     }
