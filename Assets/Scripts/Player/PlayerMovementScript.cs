@@ -12,17 +12,13 @@ public class PlayerMovementScript : MonoBehaviour
     [Space]
 
     [Header("Dash")]
-    public float dashSpeed = 8f;
-    public float dashDuration = 0.2f;
+    public float dashSpeed = 10f;
     public float dashCooldown = 1.5f;
     [Space]
 
     [Header("Air movement")]
     public float airSpeedMultiplier = 0.8f; //justerar hastigheten i luften
     public float airAcceleration = 0.2f; //Hur snabbt spelaren kan ändra riktning i luften
-    [Space]
-
-    [Header("Ground Checks")]
     [Space]
 
     [Header("Other")]
@@ -32,7 +28,7 @@ public class PlayerMovementScript : MonoBehaviour
 
     private Rigidbody2D rb;
     public float playerInput;
-    public float dashTimer;
+    public float dashCooldownTimer;
     public bool grounded;
     public bool jumping;
     public bool dashing;
@@ -91,27 +87,30 @@ public class PlayerMovementScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        dashTimer += Time.fixedDeltaTime;
+        dashCooldownTimer += Time.fixedDeltaTime;
 
         currentSpeed = rb.velocity.x;
 
-        if (dashing && dashTimer > dashCooldown)
+        if (dashing && dashCooldownTimer > dashCooldown) //Player dash
         {
-            Dash(dashSpeed, dashDuration);
-        }
-
-        if (grounded)
-        {
-            if (jumping)
-            {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            }
-
-            Movement(movementSpeed, groundAcceleration, 1);
+            rb.velocity = new Vector2(playerInput * dashSpeed, 0);
+            dashCooldownTimer = 0;
         }
         else
         {
-            Movement(movementSpeed, airAcceleration, airSpeedMultiplier);
+            if (grounded) //If player standing on ground
+            {
+                if (jumping) //Is player jumping
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                }
+
+                Movement(movementSpeed, groundAcceleration, 1);
+            }
+            else
+            {
+                Movement(movementSpeed, airAcceleration, airSpeedMultiplier);
+            }
         }
     }
 
@@ -134,10 +133,5 @@ public class PlayerMovementScript : MonoBehaviour
 
         //Adds velocityChange to rigidbody
         rb.velocity += new Vector2(velocityChange.x * multiplier, 0);
-    }
-
-    void Dash(float speed, float duration)
-    {
-
     }
 }

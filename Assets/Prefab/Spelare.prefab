@@ -300,17 +300,20 @@ MonoBehaviour:
   movementSpeed: 5
   groundAcceleration: 0.5
   jumpForce: 7.5
+  dashSpeed: 10
+  dashCooldown: 1.5
   airSpeedMultiplier: 0.8
   airAcceleration: 0.2
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 8
   interactionRadius: 2
   trashcanLayer:
     serializedVersion: 2
     m_Bits: 256
   spriteRenderer: {fileID: 3545759748170917195}
+  playerInput: 0
+  dashCooldownTimer: 0
   grounded: 0
+  jumping: 0
+  dashing: 0
 --- !u!114 &-7199941248915287070
 MonoBehaviour:
   m_ObjectHideFlags: 0
