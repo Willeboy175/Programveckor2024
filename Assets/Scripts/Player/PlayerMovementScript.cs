@@ -13,6 +13,8 @@ public class PlayerMovementScript : MonoBehaviour
 
     [Header("Dash")]
     public float dashSpeed = 10f;
+    public float dashExitSpeed = 7f;
+    public float dashDuration = 0.3f;
     public float dashCooldown = 1.5f;
     [Space]
 
@@ -28,10 +30,13 @@ public class PlayerMovementScript : MonoBehaviour
 
     private Rigidbody2D rb;
     public float playerInput;
+    public float dashDirection;
     public float dashCooldownTimer;
+    public float dashTimer;
     public bool grounded;
     public bool jumping;
     public bool dashing;
+    public bool dash;
 
     // Start is called before the first frame update
     void Start()
@@ -43,24 +48,19 @@ public class PlayerMovementScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerInput = Input.GetAxisRaw("Horizontal"); //Get player input
+        GetInputs();
 
-        if (Input.GetKey(KeyCode.Space))
-        {
-            jumping = true;
-        }
-        else
-        {
-            jumping = false;
-        }
+        dashCooldownTimer += Time.deltaTime;
+        dashTimer += Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.LeftShift) && playerInput != 0)
+        if (dashing && dashCooldownTimer > dashCooldown) //Starts dash
         {
-            dashing = true;
-        }
-        else
-        {
-            dashing = false;
+            dash = true;
+
+            //Set and reset values
+            dashDirection = playerInput;
+            dashCooldownTimer = 0;
+            dashTimer = 0;
         }
 
         //Flip the sprite based on player input
@@ -87,14 +87,21 @@ public class PlayerMovementScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        dashCooldownTimer += Time.fixedDeltaTime;
-
         currentSpeed = rb.velocity.x;
 
-        if (dashing && dashCooldownTimer > dashCooldown) //Player dash
+        if (dash && dashTimer > dashDuration) //Ends dash
         {
-            rb.velocity = new Vector2(playerInput * dashSpeed, 0);
+            rb.velocity = new Vector2(dashDirection * dashExitSpeed, 0); //Set player speed after dash
+
+            //Reset values
+            dash = false;
+            dashDirection = 0;
             dashCooldownTimer = 0;
+        }
+
+        if (dash) //Player dash
+        {
+            rb.velocity = new Vector2(dashDirection * dashSpeed, 0);
         }
         else
         {
@@ -105,12 +112,35 @@ public class PlayerMovementScript : MonoBehaviour
                     rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 }
 
-                Movement(movementSpeed, groundAcceleration, 1);
+                Movement(movementSpeed, groundAcceleration, 1); //Movement on ground
             }
             else
             {
-                Movement(movementSpeed, airAcceleration, airSpeedMultiplier);
+                Movement(movementSpeed, airAcceleration, airSpeedMultiplier); //Movement in air
             }
+        }
+    }
+
+    void GetInputs()
+    {
+        playerInput = Input.GetAxisRaw("Horizontal"); //Get player input
+
+        if (Input.GetKey(KeyCode.Space)) //Get jump inputs
+        {
+            jumping = true;
+        }
+        else
+        {
+            jumping = false;
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift) && playerInput != 0) //Get dash inputs
+        {
+            dashing = true;
+        }
+        else
+        {
+            dashing = false;
         }
     }
 
