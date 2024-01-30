@@ -9,6 +9,7 @@ public class HealthPeak : MonoBehaviour
     public GameObject HealthPack;
     MovementScript playerMovement;
     Health healthValues;
+    public ParticleSystem pS;
 
     void Update()
     {
@@ -23,6 +24,9 @@ public class HealthPeak : MonoBehaviour
     void Activ8HealthPack(MovementScript playerMovement, Health healthValues)
     {
         Health.currentHealth += 1;
+        GetComponent<ParticleSystem>().Play();
+        ParticleSystem.EmissionModule em = GetComponent<ParticleSystem>().emission;
+        em.enabled = true;
         Deactiv8HealthPack();
     }
     void Deactiv8HealthPack() 
