@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
 
     public static int getCurrentHealth;
     public static int getMaxHealth;
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -27,7 +28,8 @@ public class Health : MonoBehaviour
         // You can also update a health bar UI here if you have one
         Debug.Log("Player healed! Current Health: " + currentHealth);
     }
-public void TakeDamage(int damage) // är en check på när gubben tar skada
+    
+    public void TakeDamage(int damage) // är en check på när gubben tar skada
     {
         currentHealth -= damage;
 
@@ -36,17 +38,11 @@ public void TakeDamage(int damage) // är en check på när gubben tar skada
             Die();
         }
     }
-    
-    public void HealthPack(int health, Collision2D Collision)
-    {
-        HealthPack collision = null;
-        if (currentHealth < maxHealth && collision.gameObject.tag == "HealthPack")
-        {
-            currentHealth += 1;
-        }
-    }
+
     void Update()
     {
+        getCurrentHealth = currentHealth;
+
         //Om hälsan är under ett visst värde inaktiveras en del av healthbaren 
         if (currentHealth == 2)
         {
@@ -66,8 +62,8 @@ public void TakeDamage(int damage) // är en check på när gubben tar skada
             HealthBar2.SetActive(true);
             HealthBar3.SetActive(true);
         }
-        getCurrentHealth = currentHealth;
     }
+
     // När gubben dör tas den bort, healthbaren tas bort och game over screenen visas upp
     void Die()
     {

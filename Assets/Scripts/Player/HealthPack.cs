@@ -1,25 +1,46 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthPack : MonoBehaviour
 {
-    public int healthAmount = 1; // The amount of health the pack restores
+    public int healAmount = 1; // Amount of health healthpack will add
+    public float interactionRadius = 0.5f; // Radius within which the player can interact with the healthpack
+    public LayerMask playerLayer; // Layer mask to filter players for interaction
+    public ParticleSystem pS;
 
-    private void OnTriggerEnter(Collider other)
+    public PlayerMovementScript playerMovement;
+    public Health healthScript;
+
+    void Start()
     {
-        // Check if the collider belongs to the player
-        if (other.CompareTag("Player"))
+        
+    }
+
+    void Update()
+    {
+        // Check for players within the interaction radius
+        Collider2D colliders = Physics2D.OverlapCircle(transform.position, interactionRadius, playerLayer);
+
+        if (colliders != null)
         {
-            // Get the Player script attached to the player GameObject
-            Health player = other.GetComponent<Health>();
+            playerMovement = colliders.GetComponent<PlayerMovementScript>();
+            healthScript = colliders.GetComponent<Health>();
 
-            // If the Player script is found, increase player's health
-            if (player != null)
+            if (Health.getCurrentHealth < Health.getMaxHealth)
             {
-                player.Heal(healthAmount);
-
-                // Destroy the health pack object after it's used
+                Debug.Log("Using Healhtpack");
+                healthScript.Heal(healAmount);
                 Destroy(gameObject);
             }
         }
+    }
+
+    void Activ8HealthPack(PlayerMovementScript playerMovement, Health healthValues)
+    {
+        Health.getCurrentHealth += healAmount;
+        //GetComponent<ParticleSystem>().Play();
+        //ParticleSystem.EmissionModule em = GetComponent<ParticleSystem>().emission;
+        //em.enabled = true;
     }
 }
