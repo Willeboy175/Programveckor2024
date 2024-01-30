@@ -5,8 +5,8 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public GameObject HealthBar, HealthBar2, HealthBar3; //Ska visa spelaren hur mycket hälsa man har kvar
-    public static int maxHealth = 3; //sätter hälsan av gubben
-    public static int currentHealth; // Är en check på hur mycket hälsa gubben har kvar
+    public int maxHealth = 3; //sätter hälsan av gubben
+    public int currentHealth; // Är en check på hur mycket hälsa gubben har kvar
     public GameObject GameOverPanel; //Visar en panel när man dör
 
     public static int getCurrentHealth;

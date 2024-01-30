@@ -7,26 +7,26 @@ public class HealthPeak : MonoBehaviour
     public float interactRadius = 0.2f; // Radius within which the player can interact with the trash can
     public LayerMask playerLayer; // Layer mask to filter players for interaction
     public GameObject HealthPack;
-    MovementScript playerMovement;
+    PlayerMovementScript playerMovement;
     Health healthValues;
     public ParticleSystem pS;
 
     void Update()
     {
         Collider2D colliders = Physics2D.OverlapCircle(transform.position, interactRadius, playerLayer);
-        if (colliders != null && Health.currentHealth < Health.maxHealth)
+        if (colliders != null && Health.getCurrentHealth < Health.getMaxHealth)
         {
-            playerMovement = colliders.GetComponent<MovementScript>();
+            playerMovement = colliders.GetComponent<PlayerMovementScript>();
             Debug.Log("Using Healhtpack");
             Activ8HealthPack(playerMovement, healthValues);
         }
     }
-    void Activ8HealthPack(MovementScript playerMovement, Health healthValues)
+    void Activ8HealthPack(PlayerMovementScript playerMovement, Health healthValues)
     {
-        Health.currentHealth += 1;
+        Health.getCurrentHealth += 1;
         GetComponent<ParticleSystem>().Play();
-        ParticleSystem.EmissionModule em = GetComponent<ParticleSystem>().emission;
-        em.enabled = true;
+        //ParticleSystem.EmissionModule em = GetComponent<ParticleSystem>().emission;
+        //em.enabled = true;
         Deactiv8HealthPack();
     }
     void Deactiv8HealthPack() 
