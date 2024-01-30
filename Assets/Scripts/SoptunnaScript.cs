@@ -10,7 +10,7 @@ public class SoptunnaScript : MonoBehaviour
     public GameObject interactionText; //Text will appear when the player is close to the trashcan
     public GameObject gun;
 
-    MovementScript playerMovement;
+    PlayerMovementScript playerMovement;
     
     private void OnDrawGizmosSelected()
     {
@@ -23,7 +23,7 @@ public class SoptunnaScript : MonoBehaviour
         if (colliders != null)
         {
             interactionText.SetActive(true);
-            playerMovement = colliders.GetComponent<MovementScript>();
+            playerMovement = colliders.GetComponent<PlayerMovementScript>();
 
             // Check if the playerMovement component is not null && Check if the interaction key (E) is pressed
             if (playerMovement != null && Input.GetKeyDown(KeyCode.E))
@@ -41,7 +41,7 @@ public class SoptunnaScript : MonoBehaviour
             interactionText.SetActive(false);
         }
     }
-    void InteractWithTrashcan(MovementScript playerMovement, GameObject gun)
+    void InteractWithTrashcan(PlayerMovementScript playerMovement, GameObject gun)
     {
         Debug.Log("Entering the trash can");
         // Get relevant components from the player
@@ -49,7 +49,8 @@ public class SoptunnaScript : MonoBehaviour
         Rigidbody2D playerRigidBody2D = playerMovement.GetComponent<Rigidbody2D>();
         Shoot shoot = playerMovement.GetComponent<Shoot>();
         SpriteRenderer gunSprite = gun.GetComponent<SpriteRenderer>();
-        if (playerRigidBody2D != null)  // Disable gravity for the player when in the trash can
+
+        if (playerRigidBody2D != null)  // Disable movement for the player when in the trash can
         {
             playerRigidBody2D.simulated = false;
             playerRigidBody2D.velocity = Vector2.zero;
@@ -58,17 +59,17 @@ public class SoptunnaScript : MonoBehaviour
         {
             playerSpriteRenderer.enabled = false;
         }
-        if (gunSprite != null)
+        if (gunSprite != null) // Toggle player's gunSprite
         {
             gunSprite.enabled = false;
         }
-        if (shoot != null)
+        if (shoot != null) // Toggle shooting script
         {
             shoot.enabled = false;
         }
         isInTrashCan = !isInTrashCan;  // Toggle the isInTrashCan variable
     }
-    void ExitTrashcan(MovementScript playerMovement, GameObject gun)
+    void ExitTrashcan(PlayerMovementScript playerMovement, GameObject gun)
     {
         Debug.Log("Exiting the trash can");
         // Get relevant components from the player
@@ -86,11 +87,11 @@ public class SoptunnaScript : MonoBehaviour
         {
             playerSpriteRenderer.enabled = true;
         }
-        if (gunSprite != null)
+        if (gunSprite != null) // Toggle player's gunSprite
         {
             gunSprite.enabled = true;
         }
-        if (shoot != null)
+        if (shoot != null) // Toggle shooting script
         {
             shoot.enabled = true;
         }

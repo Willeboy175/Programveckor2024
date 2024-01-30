@@ -5645,6 +5645,10 @@ PrefabInstance:
       propertyPath: gun
       value: 
       objectReference: {fileID: 174788101}
+    - target: {fileID: 307168558847058668, guid: c3b23b4986baffe439a816599430282a, type: 3}
+      propertyPath: isInTrashCan
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6716508413640130476, guid: c3b23b4986baffe439a816599430282a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 77
