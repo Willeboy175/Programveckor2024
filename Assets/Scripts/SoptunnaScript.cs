@@ -8,40 +8,46 @@ public class SoptunnaScript : MonoBehaviour
     public float interactionRadius = 2f; // Radius within which the player can interact with the trash can
     public LayerMask playerLayer; // Layer mask to filter players for interaction
     public GameObject interactionText; //Text will appear when the player is close to the trashcan
-    public GameObject gun;
 
-    PlayerMovementScript playerMovement;
-    
+    private PlayerMovementScript player;
+    private RotateAroundPlayer gun;
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, interactionRadius);
     }
+
     void Update()
     {
         // Check for players within the interaction radius
         Collider2D colliders = Physics2D.OverlapCircle(transform.position, interactionRadius, playerLayer);
+
         if (colliders != null)
         {
             interactionText.SetActive(true);
-            playerMovement = colliders.GetComponent<PlayerMovementScript>();
+
+            player = colliders.GetComponent<PlayerMovementScript>();
+            gun = player.GetComponentInChildren<RotateAroundPlayer>();
 
             // Check if the playerMovement component is not null && Check if the interaction key (E) is pressed
-            if (playerMovement != null && Input.GetKeyDown(KeyCode.E))
+            if (player != null && Input.GetKeyDown(KeyCode.E))
             {
-                InteractWithTrashcan(playerMovement, gun);
+                InteractWithTrashcan(player, gun);
             }        
         }
-        else if (playerMovement != null && Input.GetKeyDown(KeyCode.E))
+        else if (player != null && Input.GetKeyDown(KeyCode.E))
         {
-            ExitTrashcan(playerMovement, gun);
-            playerMovement = null;
+            ExitTrashcan(player, gun);
+            player = null;
+            gun = null;
         }
         else
         {
             interactionText.SetActive(false);
         }
     }
-    void InteractWithTrashcan(PlayerMovementScript playerMovement, GameObject gun)
+
+    void InteractWithTrashcan(PlayerMovementScript playerMovement, RotateAroundPlayer gun)
     {
         Debug.Log("Entering the trash can");
         // Get relevant components from the player
@@ -69,7 +75,8 @@ public class SoptunnaScript : MonoBehaviour
         }
         isInTrashCan = !isInTrashCan;  // Toggle the isInTrashCan variable
     }
-    void ExitTrashcan(PlayerMovementScript playerMovement, GameObject gun)
+
+    void ExitTrashcan(PlayerMovementScript playerMovement, RotateAroundPlayer gun)
     {
         Debug.Log("Exiting the trash can");
         // Get relevant components from the player
