@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 8923087102741324070}
   - component: {fileID: 7702093149167901770}
   m_Layer: 6
-  m_Name: Spelare med Shooting
+  m_Name: Spelare med Pistol
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
