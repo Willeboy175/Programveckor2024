@@ -97,8 +97,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9101dec5f354b6244bc85b4a8162775f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactRadius: 0.5
+  healAmount: 1
+  interactionRadius: 0.5
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
-  HealthPack: {fileID: 1407594446679937511}
+  pS: {fileID: 6870738258121357926, guid: 2e49ff9709225e6418081c99a254ab20, type: 3}
+  playerMovement: {fileID: 0}
+  healthScript: {fileID: 0}

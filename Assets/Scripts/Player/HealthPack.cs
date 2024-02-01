@@ -7,7 +7,7 @@ public class HealthPack : MonoBehaviour
     public int healAmount = 1; // Amount of health healthpack will add
     public float interactionRadius = 0.5f; // Radius within which the player can interact with the healthpack
     public LayerMask playerLayer; // Layer mask to filter players for interaction
-    public ParticleSystem pS;
+    public GameObject pS;
 
     public PlayerMovementScript playerMovement;
     public Health healthScript;
@@ -31,16 +31,9 @@ public class HealthPack : MonoBehaviour
             {
                 Debug.Log("Using Healhtpack");
                 healthScript.Heal(healAmount);
+                Instantiate(pS, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
         }
-    }
-
-    void Activ8HealthPack(PlayerMovementScript playerMovement, Health healthValues)
-    {
-        Health.getCurrentHealth += healAmount;
-        //GetComponent<ParticleSystem>().Play();
-        //ParticleSystem.EmissionModule em = GetComponent<ParticleSystem>().emission;
-        //em.enabled = true;
     }
 }
