@@ -11,6 +11,7 @@ public class SoptunnaScript : MonoBehaviour
 
     private PlayerMovementScript player;
     private RotateAroundPlayer gun;
+    public bool playerWithGun = true;
 
     private void OnDrawGizmosSelected()
     {
@@ -27,7 +28,16 @@ public class SoptunnaScript : MonoBehaviour
             interactionText.SetActive(true);
 
             player = colliders.GetComponent<PlayerMovementScript>();
-            gun = player.GetComponentInChildren<RotateAroundPlayer>();
+
+            try
+            {
+                gun = player.GetComponentInChildren<RotateAroundPlayer>();
+            }
+            catch (System.Exception)
+            {
+                playerWithGun = false;
+                throw;
+            }
 
             // Check if the playerMovement component is not null && Check if the interaction key (E) is pressed
             if (player != null && Input.GetKeyDown(KeyCode.E))
@@ -40,6 +50,7 @@ public class SoptunnaScript : MonoBehaviour
             ExitTrashcan(player, gun);
             player = null;
             gun = null;
+            playerWithGun = true;
         }
         else
         {
@@ -53,8 +64,6 @@ public class SoptunnaScript : MonoBehaviour
         // Get relevant components from the player
         SpriteRenderer playerSpriteRenderer = playerMovement.GetComponent<SpriteRenderer>();
         Rigidbody2D playerRigidBody2D = playerMovement.GetComponent<Rigidbody2D>();
-        Shoot shoot = playerMovement.GetComponent<Shoot>();
-        SpriteRenderer gunSprite = gun.GetComponent<SpriteRenderer>();
 
         if (playerRigidBody2D != null)  // Disable movement for the player when in the trash can
         {
@@ -65,14 +74,23 @@ public class SoptunnaScript : MonoBehaviour
         {
             playerSpriteRenderer.enabled = false;
         }
-        if (gunSprite != null) // Toggle player's gunSprite
+
+        // If player has no gun
+        if (playerWithGun == false)
         {
-            gunSprite.enabled = false;
+            Shoot shoot = playerMovement.GetComponent<Shoot>();
+            SpriteRenderer gunSprite = gun.GetComponent<SpriteRenderer>();
+
+            if (gunSprite != null) // Toggle player's gunSprite
+            {
+                gunSprite.enabled = false;
+            }
+            if (shoot != null) // Toggle shooting script
+            {
+                shoot.enabled = false;
+            }
         }
-        if (shoot != null) // Toggle shooting script
-        {
-            shoot.enabled = false;
-        }
+        
         isInTrashCan = !isInTrashCan;  // Toggle the isInTrashCan variable
     }
 
@@ -82,8 +100,6 @@ public class SoptunnaScript : MonoBehaviour
         // Get relevant components from the player
         SpriteRenderer playerSpriteRenderer = playerMovement.GetComponent<SpriteRenderer>();
         Rigidbody2D playerRigidBody2D = playerMovement.GetComponent<Rigidbody2D>();
-        Shoot shoot = playerMovement.GetComponent<Shoot>();
-        SpriteRenderer gunSprite = gun.GetComponent<SpriteRenderer>();
 
         if (playerRigidBody2D != null)  // Enable gravity for the player when exiting the trash can
         {
@@ -94,14 +110,23 @@ public class SoptunnaScript : MonoBehaviour
         {
             playerSpriteRenderer.enabled = true;
         }
-        if (gunSprite != null) // Toggle player's gunSprite
+
+        // If player has no gun
+        if (playerWithGun == false)
         {
-            gunSprite.enabled = true;
+            Shoot shoot = playerMovement.GetComponent<Shoot>();
+            SpriteRenderer gunSprite = gun.GetComponent<SpriteRenderer>();
+
+            if (gunSprite != null) // Toggle player's gunSprite
+            {
+                gunSprite.enabled = true;
+            }
+            if (shoot != null) // Toggle shooting script
+            {
+                shoot.enabled = true;
+            }
         }
-        if (shoot != null) // Toggle shooting script
-        {
-            shoot.enabled = true;
-        }
+        
         isInTrashCan = false;  // Reset the isInTrashCan variable to false
     }
 }
