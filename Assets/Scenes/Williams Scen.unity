@@ -312,6 +312,66 @@ Transform:
   - {fileID: 8338592959204222372}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1214351825
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6716508413640130476, guid: c3b23b4986baffe439a816599430282a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.014954
+      objectReference: {fileID: 0}
+    - target: {fileID: 6716508413640130476, guid: c3b23b4986baffe439a816599430282a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.9884149
+      objectReference: {fileID: 0}
+    - target: {fileID: 6716508413640130476, guid: c3b23b4986baffe439a816599430282a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6716508413640130476, guid: c3b23b4986baffe439a816599430282a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6716508413640130476, guid: c3b23b4986baffe439a816599430282a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6716508413640130476, guid: c3b23b4986baffe439a816599430282a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6716508413640130476, guid: c3b23b4986baffe439a816599430282a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6716508413640130476, guid: c3b23b4986baffe439a816599430282a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6716508413640130476, guid: c3b23b4986baffe439a816599430282a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6716508413640130476, guid: c3b23b4986baffe439a816599430282a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050923016967795739, guid: c3b23b4986baffe439a816599430282a, type: 3}
+      propertyPath: m_Name
+      value: Soptunna
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3874467171251296647, guid: c3b23b4986baffe439a816599430282a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: c3b23b4986baffe439a816599430282a, type: 3}
 --- !u!1 &1761284448
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,6 +467,10 @@ PrefabInstance:
     - target: {fileID: 1987405189707558259, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
       propertyPath: m_Name
       value: Spelare med Shooting
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987405189707558259, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8111321479724187247, guid: 40a9805f0e2316c469f3e1f9319795fc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2278,3 +2342,4 @@ SceneRoots:
   - {fileID: 7528713102870473483}
   - {fileID: 1164964055}
   - {fileID: 1761284451}
+  - {fileID: 1214351825}
