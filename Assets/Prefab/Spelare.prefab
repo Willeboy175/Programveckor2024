@@ -297,12 +297,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSpeed: 0
-  movementSpeed: 5
+  movementSpeed: 4.5
   groundAcceleration: 0.5
   jumpForce: 7.5
   dashSpeed: 10
-  dashExitSpeed: 7
-  dashDuration: 0.3
+  dashExitSpeed: 8
+  dashDuration: 0.25
   dashCooldown: 1.5
   airSpeedMultiplier: 0.8
   airAcceleration: 0.2
@@ -334,6 +334,8 @@ MonoBehaviour:
   HealthBar: {fileID: 0}
   HealthBar2: {fileID: 0}
   HealthBar3: {fileID: 0}
+  maxHealth: 3
+  currentHealth: 0
   GameOverPanel: {fileID: 0}
 --- !u!50 &1810356876735604090
 Rigidbody2D:
