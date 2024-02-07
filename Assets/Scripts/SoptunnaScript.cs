@@ -9,9 +9,9 @@ public class SoptunnaScript : MonoBehaviour
     public LayerMask playerLayer; // Layer mask to filter players for interaction
     public GameObject interactionText; //Text will appear when the player is close to the trashcan
 
-    public PlayerMovementScript playerMovement;
-    public RotateAroundPlayer gun;
-    public bool playerWithGun = true;
+    private PlayerMovementScript playerMovement;
+    private RotateAroundPlayer gun;
+    private bool playerWithGun = true;
 
     private void OnDrawGizmosSelected()
     {

@@ -29,14 +29,14 @@ public class PlayerMovementScript : MonoBehaviour
     public SpriteRenderer spriteRenderer;
 
     private Rigidbody2D rb;
-    public float playerInput;
-    public float dashDirection;
-    public float dashCooldownTimer;
-    public float dashTimer;
-    public bool grounded;
-    public bool jumping;
-    public bool dashing;
-    public bool dash;
+    private float playerInput;
+    private float dashDirection;
+    private float dashCooldownTimer;
+    private float dashTimer;
+    private bool grounded;
+    private bool jumping;
+    private bool dashing;
+    private bool dash;
 
     // Start is called before the first frame update
     void Start()
