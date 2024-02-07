@@ -9,8 +9,8 @@ public class SoptunnaScript : MonoBehaviour
     public LayerMask playerLayer; // Layer mask to filter players for interaction
     public GameObject interactionText; //Text will appear when the player is close to the trashcan
 
-    private PlayerMovementScript player;
-    private RotateAroundPlayer gun;
+    public PlayerMovementScript playerMovement;
+    public RotateAroundPlayer gun;
     public bool playerWithGun = true;
 
     private void OnDrawGizmosSelected()
@@ -27,30 +27,34 @@ public class SoptunnaScript : MonoBehaviour
         {
             interactionText.SetActive(true);
 
-            player = colliders.GetComponent<PlayerMovementScript>();
+            if (playerMovement == null)
+            {
+                playerMovement = colliders.GetComponent<PlayerMovementScript>();
 
-            try
-            {
-                gun = player.GetComponentInChildren<RotateAroundPlayer>();
-            }
-            catch (System.Exception)
-            {
-                playerWithGun = false;
-                throw;
+                try
+                {
+                    gun = playerMovement.GetComponentInChildren<RotateAroundPlayer>();
+                }
+                catch (System.Exception)
+                {
+                    throw;
+                }
+
+                if (gun == null)
+                {
+                    playerWithGun = false;
+                }
             }
 
             // Check if the playerMovement component is not null && Check if the interaction key (E) is pressed
-            if (player != null && Input.GetKeyDown(KeyCode.E))
+            if (playerMovement != null && Input.GetKeyDown(KeyCode.E))
             {
-                InteractWithTrashcan(player, gun);
+                InteractWithTrashcan(playerMovement, gun);
             }        
         }
-        else if (player != null && Input.GetKeyDown(KeyCode.E))
+        else if (playerMovement != null && Input.GetKeyDown(KeyCode.E))
         {
-            ExitTrashcan(player, gun);
-            player = null;
-            gun = null;
-            playerWithGun = true;
+            ExitTrashcan(playerMovement, gun);
         }
         else
         {
@@ -76,7 +80,7 @@ public class SoptunnaScript : MonoBehaviour
         }
 
         // If player has no gun
-        if (playerWithGun == false)
+        if (playerWithGun)
         {
             Shoot shoot = playerMovement.GetComponent<Shoot>();
             SpriteRenderer gunSprite = gun.GetComponent<SpriteRenderer>();
@@ -112,7 +116,7 @@ public class SoptunnaScript : MonoBehaviour
         }
 
         // If player has no gun
-        if (playerWithGun == false)
+        if (playerWithGun)
         {
             Shoot shoot = playerMovement.GetComponent<Shoot>();
             SpriteRenderer gunSprite = gun.GetComponent<SpriteRenderer>();
