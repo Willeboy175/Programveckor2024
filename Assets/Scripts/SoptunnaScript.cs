@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class SoptunnaScript : MonoBehaviour
 {
-    public bool isInTrashCan = false; // Variable indicating whether the player is currently in the trash can
-    public float interactionRadius = 2f; // Radius within which the player can interact with the trash can
-    public LayerMask playerLayer; // Layer mask to filter players for interaction
-    public GameObject interactionText; //Text will appear when the player is close to the trashcan
+    // Variabler för att hantera trash can-interaktion
+    public bool isInTrashCan = false; // Variabel som indikerar om spelaren för närvarande är i soptunnan
+    public float interactionRadius = 2f; // Radie inom vilken spelaren kan interagera med soptunnan
+    public LayerMask playerLayer; // Layer mask för att filtrera spelare för interaktion
+    public GameObject interactionText; // Text som visas när spelaren är nära soptunnan
 
+    // Referenser till andra script och objekt
     private PlayerMovementScript playerMovement;
     private RotateAroundPlayer gun;
     private bool playerWithGun = true;
 
+    // Metod som ritar en gizmo för att visa interaktionsradien i Unity-editorn
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, interactionRadius);
@@ -20,15 +23,17 @@ public class SoptunnaScript : MonoBehaviour
 
     void Update()
     {
-        // Check for players within the interaction radius
+        // Kolla om spelare är inom interaktionsradien
         Collider2D colliders = Physics2D.OverlapCircle(transform.position, interactionRadius, playerLayer);
 
         if (colliders != null)
         {
+            // Visa interaktionstext
             interactionText.SetActive(true);
 
             if (playerMovement == null)
             {
+                // Hämta referenser till spelarobjektet och dess vapen
                 playerMovement = colliders.GetComponent<PlayerMovementScript>();
 
                 try
@@ -46,11 +51,11 @@ public class SoptunnaScript : MonoBehaviour
                 }
             }
 
-            // Check if the playerMovement component is not null && Check if the interaction key (E) is pressed
+            // Kolla om spelaren finns och om interaktionsknappen (E) trycks ned
             if (playerMovement != null && Input.GetKeyDown(KeyCode.E))
             {
                 InteractWithTrashcan(playerMovement, gun);
-            }        
+            }
         }
         else if (playerMovement != null && Input.GetKeyDown(KeyCode.E))
         {
@@ -58,79 +63,82 @@ public class SoptunnaScript : MonoBehaviour
         }
         else
         {
+            // Göm interaktionstext om ingen spelare är inom räckvidd
             interactionText.SetActive(false);
         }
     }
 
+    // Metod för att interagera med soptunnan
     void InteractWithTrashcan(PlayerMovementScript playerMovement, RotateAroundPlayer gun)
     {
         Debug.Log("Entering the trash can");
-        // Get relevant components from the player
+        // Hämta relevanta komponenter från spelaren
         SpriteRenderer playerSpriteRenderer = playerMovement.GetComponent<SpriteRenderer>();
         Rigidbody2D playerRigidBody2D = playerMovement.GetComponent<Rigidbody2D>();
 
-        if (playerRigidBody2D != null)  // Disable movement for the player when in the trash can
+        if (playerRigidBody2D != null)  // Stoppa rörelse för spelaren när hen är i soptunnan
         {
             playerRigidBody2D.simulated = false;
             playerRigidBody2D.velocity = Vector2.zero;
         }
-        if (playerSpriteRenderer != null)   // Toggle the visibility of the player's sprite
+        if (playerSpriteRenderer != null)   // Dölj spelarens sprite
         {
             playerSpriteRenderer.enabled = false;
         }
 
-        // If player has no gun
+        // Om spelaren inte har ett vapen
         if (playerWithGun)
         {
             Shoot shoot = playerMovement.GetComponent<Shoot>();
             SpriteRenderer gunSprite = gun.GetComponent<SpriteRenderer>();
 
-            if (gunSprite != null) // Toggle player's gunSprite
+            if (gunSprite != null) // Dölj vapnets sprite
             {
                 gunSprite.enabled = false;
             }
-            if (shoot != null) // Toggle shooting script
+            if (shoot != null) // Avaktivera skript för skjutning
             {
                 shoot.enabled = false;
             }
         }
-        
-        isInTrashCan = !isInTrashCan;  // Toggle the isInTrashCan variable
+
+        isInTrashCan = !isInTrashCan;  // Ändra isInTrashCan-variabeln
     }
 
+    // Metod för att lämna soptunnan
     void ExitTrashcan(PlayerMovementScript playerMovement, RotateAroundPlayer gun)
     {
         Debug.Log("Exiting the trash can");
-        // Get relevant components from the player
+        // Hämta relevanta komponenter från spelaren
         SpriteRenderer playerSpriteRenderer = playerMovement.GetComponent<SpriteRenderer>();
         Rigidbody2D playerRigidBody2D = playerMovement.GetComponent<Rigidbody2D>();
 
-        if (playerRigidBody2D != null)  // Enable gravity for the player when exiting the trash can
+        if (playerRigidBody2D != null)  // Aktivera gravitation för spelaren när hen lämnar soptunnan
         {
             playerRigidBody2D.simulated = true;
             playerRigidBody2D.velocity = Vector2.zero;
         }
-        if (playerSpriteRenderer != null)   // Toggle the visibility of the player's sprite
+        if (playerSpriteRenderer != null)   // Visa spelarens sprite igen
         {
             playerSpriteRenderer.enabled = true;
         }
 
-        // If player has no gun
+        // Om spelaren inte har ett vapen
         if (playerWithGun)
         {
             Shoot shoot = playerMovement.GetComponent<Shoot>();
             SpriteRenderer gunSprite = gun.GetComponent<SpriteRenderer>();
 
-            if (gunSprite != null) // Toggle player's gunSprite
+            if (gunSprite != null) // Visa vapnets sprite
             {
                 gunSprite.enabled = true;
             }
-            if (shoot != null) // Toggle shooting script
+            if (shoot != null) // Aktivera skript för skjutning
             {
                 shoot.enabled = true;
             }
         }
-        
-        isInTrashCan = false;  // Reset the isInTrashCan variable to false
+
+        isInTrashCan = false;  // Återställ isInTrashCan-variabeln till false
     }
 }
