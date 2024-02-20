@@ -27,7 +27,6 @@ public class AnimationScript : MonoBehaviour
         {
             animator.SetBool("move", false); // Sätter boolen "move" till false i Animator-kontrollen om ingen rörelsetangent är nedtryckt
         }
-
         // Kontrollerar om spelaren trycker på hoppknappen (Space)
         if (Input.GetKeyDown(KeyCode.Space))
         {

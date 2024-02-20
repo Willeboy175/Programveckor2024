@@ -57,7 +57,7 @@ public class SoptunnaScript : MonoBehaviour
                 InteractWithTrashcan(playerMovement, gun);
             }
         }
-        else if (playerMovement != null && Input.GetKeyDown(KeyCode.E))
+        else if (playerMovement != null && Input.GetKeyDown(KeyCode.E) && isInTrashCan == true)
         {
             ExitTrashcan(playerMovement, gun);
         }
@@ -67,7 +67,6 @@ public class SoptunnaScript : MonoBehaviour
             interactionText.SetActive(false);
         }
     }
-
     // Metod för att interagera med soptunnan
     void InteractWithTrashcan(PlayerMovementScript playerMovement, RotateAroundPlayer gun)
     {
@@ -85,8 +84,7 @@ public class SoptunnaScript : MonoBehaviour
         {
             playerSpriteRenderer.enabled = false;
         }
-
-        // Om spelaren inte har ett vapen
+        // Om spelaren har ett vapen
         if (playerWithGun)
         {
             Shoot shoot = playerMovement.GetComponent<Shoot>();
@@ -101,11 +99,10 @@ public class SoptunnaScript : MonoBehaviour
                 shoot.enabled = false;
             }
         }
-
         isInTrashCan = !isInTrashCan;  // Ändra isInTrashCan-variabeln
     }
 
-    // Metod för att lämna soptunnan
+    // Funktion för att lämna soptunnan
     void ExitTrashcan(PlayerMovementScript playerMovement, RotateAroundPlayer gun)
     {
         Debug.Log("Exiting the trash can");
@@ -113,7 +110,7 @@ public class SoptunnaScript : MonoBehaviour
         SpriteRenderer playerSpriteRenderer = playerMovement.GetComponent<SpriteRenderer>();
         Rigidbody2D playerRigidBody2D = playerMovement.GetComponent<Rigidbody2D>();
 
-        if (playerRigidBody2D != null)  // Aktivera gravitation för spelaren när hen lämnar soptunnan
+        if (playerRigidBody2D != null)  // Aktivera gravitation för spelaren när man lämnar soptunnan
         {
             playerRigidBody2D.simulated = true;
             playerRigidBody2D.velocity = Vector2.zero;
@@ -123,7 +120,7 @@ public class SoptunnaScript : MonoBehaviour
             playerSpriteRenderer.enabled = true;
         }
 
-        // Om spelaren inte har ett vapen
+        // Om spelaren har ett vapen
         if (playerWithGun)
         {
             Shoot shoot = playerMovement.GetComponent<Shoot>();
@@ -138,7 +135,6 @@ public class SoptunnaScript : MonoBehaviour
                 shoot.enabled = true;
             }
         }
-
         isInTrashCan = false;  // Återställ isInTrashCan-variabeln till false
     }
 }
